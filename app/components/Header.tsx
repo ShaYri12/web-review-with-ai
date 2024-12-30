@@ -25,7 +25,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <nav className="px-4 lg:px-[24px] py-6 3xl:py-[32px] relative">
+    <nav className="px-4 lg:px-[24px] py-4 md:py-6 3xl:py-[32px] relative">
       <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto flex items-center justify-between">
         {/* Mobile Menu Button */}
         <div className="md:hidden">
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef as MutableRefObject<HTMLDivElement>}
-        className={`fixed top-0 left-0 w-64 h-full bg-gray-800 z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 w-64 h-full bg-[#252A2E] z-50 transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
