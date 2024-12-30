@@ -6,8 +6,8 @@ import { BsInstagram } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="px-4 py-6 3xl:py-[32px] mt-auto xl:mt-[80px]">
-      <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto flex justify-between items-center">
+    <footer className="px-4 lg:px-[24px] py-4 md:py-6 3xl:py-[32px] mt-[40px] md:mt-auto xl:mt-[80px]">
+      <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto flex flex-wrap gap-4 justify-between items-center">
         <div className="flex space-x-4">
           <Link href="#" className="text-white hover:text-cyan">
             <FaFacebook className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />

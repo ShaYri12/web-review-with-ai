@@ -18,3 +18,21 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+.analyze-btn {
+  width: auto;
+}
+
+@media screen and (max-width: 640px) {
+  .analyze-btn {
+    width: 99.93px;
+    max-width: 99.93px;
+  }
+}
+
+@media screen and (max-width: 363px) {
+  .analyze-btn {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
