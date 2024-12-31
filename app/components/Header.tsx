@@ -1,8 +1,7 @@
 "use client";
-
 import React, { useState, useEffect, useRef, MutableRefObject } from "react";
 import Link from "next/link";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Header: React.FC = () => {
