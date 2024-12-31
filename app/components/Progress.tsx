@@ -62,18 +62,18 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
-      <div className="relative h-[90vh] bg-white rounded-[40px] p-4 sm:p-6 md:p-8 3xl:p-[50px] w-full max-w-[95%] sm:max-w-[85%] md:max-w-[600px] 3xl:max-w-[1080px] mx-auto">
-        <h2 className="text-2xl sm:text-3xl md:text-[40px] xl:text-[70px] 3xl:text-[100px] font-bold text-[#252A2E] mb-[30px] xl:mb-[50px] 3xl:mb-[70px]">
+      <div className="relative min-h-[80vh] bg-white rounded-[30px] md:rounded-[40px] p-4 sm:p-6 md:p-8 xl:p-[40px] 3xl:p-[50px] w-full max-w-[95%] sm:max-w-[85%] md:max-w-[600px] xl:max-w-[900px] 3xl:max-w-[1080px] mx-auto">
+        <h2 className="text-2xl sm:text-3xl md:text-[40px] xl:text-[70px] 3xl:text-[100px] font-bold text-[#252A2E] mb-[10px] md:mb-[20px] xl:mb-[40px] 3xl:mb-[80px] md:pt-3">
           Processing
         </h2>
-        <p className="text-[#5E656C] text-base sm:text-lg md:text-xl 3xl:text-[32px] mb-6 sm:mb-8 md:mb-12 text-[#252A2E]">
+        <p className="text-[#5E656C] text-[14px] md:text-[16px] lg:text-lg xl:text-xl 3xl:text-[32px] mb-6 sm:mb-8 md:mb-[30px] 3xl:mb-[74px] text-[#252A2E]">
           Hang tight, we're getting your customized report ready now!
         </p>
-        <p className="text-center italic text-base sm:text-lg md:text-xl 3xl:text-[24px] mb-3 sm:mb-4 px-2 text-[#252A2E]">
+        <p className="text-center italic text-[14px] md:text-[16px] lg:text-lg xl:text-xl 3xl:text-[24px] mb-2 md:mb-3 lg:mb-4 3xl:mb-[30px] px-2 text-[#252A2E]">
           {message}
         </p>
 
-        <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] 3xl:h-[400px] 3xl:w-[400px] mx-auto mb-6 sm:mb-8">
+        <div className="relative w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px] 3xl:h-[400px] 3xl:w-[400px] mx-auto mb-4 sm:mb-6 3xl:mb-8">
           {/* Progress Circle */}
           <svg className="w-full h-full -rotate-90 transform">
             <circle
@@ -96,12 +96,12 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
           </svg>
           {/* Percentage Text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-            <span className="text-3xl sm:text-4xl md:text-[64px] font-bold text-[#252A2E]">
+            <span className="text-3xl sm:text-4xl md:text-[64px] 3xl:text-[100px] font-bold text-black">
               {progress}%
             </span>
           </div>
         </div>
-        <p className="text-center text-xs sm:text-sm 3xl:text-[18px] text-[#252A2E]">
+        <p className="text-center text-xs lg:text-[14px] 3xl:text-[18px] text-[#252A2E]">
           This should take about 60s
         </p>
       </div>
