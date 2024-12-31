@@ -24,22 +24,22 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
       },
       {
         progress: 25,
-        time: 2000,
+        time: 4000,
         message: "Evaluating SEO and engagement metrics",
       },
       {
         progress: 50,
-        time: 2000,
+        time: 6000,
         message: "Modeling conversion probability algorithms",
       },
       {
         progress: 75,
-        time: 2000,
+        time: 8000,
         message: "Analyzing semantic web metrics for growth opportunity",
       },
       {
         progress: 100,
-        time: 2000,
+        time: 10000,
         message: "Constructing tailored optimization strategy",
       },
     ];
