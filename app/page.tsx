@@ -22,10 +22,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#252A2E] text-white">
+    <div className="h-screen flex flex-col justify-between min-h-full items-center bg-[#252A2E] text-white">
       <Header />
 
-      <main className="min-h-[65vh] px-4 lg:px-[24px] 3xl:py-[47px] py-[23px]">
+      <main className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] my-auto">
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
           <div className="">
             <div className="flex items-center space-x-4">

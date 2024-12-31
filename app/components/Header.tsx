@@ -24,7 +24,7 @@ const Header: React.FC = () => {
   }, []);
 
   return (
-    <nav className="px-4 lg:px-[24px] py-4 md:py-6 3xl:py-[32px] relative">
+    <nav className="px-4 lg:px-[24px] py-4 md:py-6 3xl:py-[32px] relative w-full">
       <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto flex items-center justify-between">
         {/* Mobile Menu Button */}
         <div className="md:hidden">

@@ -19,7 +19,7 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
     const intervals = [
       {
         progress: 5,
-        time: 1000,
+        time: 2000,
         message: "Deploying AI agents to review your site",
       },
       {
@@ -29,17 +29,17 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
       },
       {
         progress: 50,
-        time: 3000,
+        time: 2000,
         message: "Modeling conversion probability algorithms",
       },
       {
         progress: 75,
-        time: 4000,
+        time: 2000,
         message: "Analyzing semantic web metrics for growth opportunity",
       },
       {
         progress: 100,
-        time: 5000,
+        time: 2000,
         message: "Constructing tailored optimization strategy",
       },
     ];
