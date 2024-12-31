@@ -25,7 +25,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#252A2E] text-white">
       <Header />
 
-      <main className="min-h-[70vh] px-4 lg:px-[24px] 3xl:py-[80px] py-[23px]">
+      <main className="min-h-[65vh] px-4 lg:px-[24px] 3xl:py-[47px] py-[23px]">
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
           <div className="">
             <div className="flex items-center space-x-4">
