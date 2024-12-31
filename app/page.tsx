@@ -58,16 +58,23 @@ export default function Home() {
 
             <div className="3xl:mt-[80px] lg:mt-[70px] md:mt-[60px] mt-[50px] flex lg:flex-row flex-col justify-between gap-8 xl:gap-[100px]">
               <div className="relative flex-1 lg:w-auto max-w-[600px]">
-                <div className="flex items-center space-x-2 md:space-x-4 lg:space-x-[20px] 3xl:space-x-[26px] 3xl:mb-[80px] lg:mb-[60px] mb-[40px]">
+                <div className="flex items-center space-x-2 md:space-x-4 lg:space-x-[20px] 3xl:space-x-[26px] 3xl:mb-[100px] lg:mb-[70px] sm:mb-[65px] mb-[40px]">
                   <span className="3xl:w-[50px] lg:w-[40px] md:w-[35px] w-[30px] min-w-[32px] 3xl:h-[50px] lg:h-[40px] md:h-[35px] h-[30px] rounded-full 3xl:text-[30px] lg:text-[22px] md:text-[18px] font-bold bg-cyan flex items-center justify-center">
                     1
                   </span>
-                  <span className="text-[18px] lg:text-[20px] 3xl:text-[25px]">
+                  <span className="relative text-[18px] lg:text-[20px] 3xl:text-[25px]">
                     Enter your URL here
+                    <Image
+                      src="/assets/arrow-down.svg"
+                      alt="arrow-down"
+                      width={150.91}
+                      height={117.5}
+                      className="sm:block hidden 3xl:w-[150.91px] xl:w-[110px] w-[90px] 3xl:h-[117.5px] absolute 3xl:right-[-170px] xl:right-[-120px] right-[-100px] top-[15px]"
+                    />
                   </span>
                 </div>
 
-                <div className="flex sm:flex-nowrap flex-wrap justify-end bg-[#5E656C] rounded-[15px] p-[4px] lg:gap-0 gap-1">
+                <div className="flex sm:flex-nowrap flex-wrap justify-end bg-[#5E656C] rounded-[15px] p-[4px] lg:gap-0 gap-1 3xl:w-[800px]">
                   <input
                     type="text"
                     value={url}
@@ -108,6 +115,13 @@ export default function Home() {
                     </span>
                   </div>
                 </div>
+                <Image
+                  src="/assets/arrow-up.svg"
+                  alt="arrow-up"
+                  width={414.5}
+                  height={131.28}
+                  className="lg:block hidden 3xl:w-[414.5px] xl:w-[300px] w-[240px] 3xl:h-[131.28px] absolute 3xl:left-[-260px] xl:left-[-190px] left-[-120px] 3xl:top-[75%] xl:top-[61%] top-[60%] -translate-y-1/2"
+                />
               </div>
             </div>
           </div>
