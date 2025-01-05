@@ -123,7 +123,6 @@ export default function Home() {
                       alt="pages"
                       width={261}
                       height={316}
-                      layout="fill"
                       objectFit="contain"
                       priority
                     />
