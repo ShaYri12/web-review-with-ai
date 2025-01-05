@@ -29,7 +29,7 @@ export default function Home() {
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
           <div className="">
             <div className="flex items-center space-x-4">
-              <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[90px]">
+              <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px]">
                 Review your Website with AI{" "}
                 <span className="inline-flex items-center">
                   <Image
@@ -43,7 +43,7 @@ export default function Home() {
               </h1>
             </div>
 
-            <p className="sm:mt-0 mt-2 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[28px] 3xl:text-[38px] font-[300] sm:max-w-[1029px] max-w-[360px]">
+            <p className="sm:mt-0 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[28px] 3xl:text-[38px] font-[300] sm:max-w-[1029px] max-w-[360px]">
               You deserve a website that works as{" "}
               <span className="relative">
                 <span className="z-[2] relative font-[700]">
@@ -56,7 +56,7 @@ export default function Home() {
               We&apos;re here to help!
             </p>
 
-            <div className="3xl:mt-[70px] lg:mt-[50px] md:mt-[60px] mt-[50px] flex lg:flex-row flex-col justify-between gap-8 xl:gap-[100px]">
+            <div className="3xl:mt-[70px] lg:mt-[30px] md:mt-[60px] mt-[50px] flex lg:flex-row flex-col justify-between gap-8 xl:gap-[100px]">
               <div className="relative flex-1 lg:w-auto max-w-[600px]">
                 <div className="flex items-center space-x-2 md:space-x-4 lg:space-x-[20px] 3xl:space-x-[26px] 3xl:mb-[100px] mb-[70px]">
                   <span className="3xl:w-[50px] lg:w-[40px] md:w-[35px] w-[30px] min-w-[32px] 3xl:h-[50px] lg:h-[40px] md:h-[35px] h-[30px] rounded-full 3xl:text-[30px] lg:text-[22px] md:text-[18px] font-bold bg-cyan flex items-center justify-center">
@@ -155,7 +155,7 @@ export default function Home() {
                         />
                       </div>
                     </div>
-                    <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan flex items-center justify-center">
+                    <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan items-center justify-center">
                       2
                     </span>
                   </div>
@@ -165,7 +165,7 @@ export default function Home() {
                   alt="arrow-up"
                   width={414.5}
                   height={131.28}
-                  className="lg:block hidden 3xl:w-[414.5px] xl:w-[300px] w-[240px] 3xl:h-[131.28px] absolute 3xl:left-[-260px] xl:left-[-190px] left-[-120px] 3xl:top-[82%] xl:top-[73%] top-[70%] -translate-y-1/2"
+                  className="lg:block hidden 3xl:w-[414.5px] xl:w-[300px] w-[240px] 3xl:h-[131.28px] absolute 3xl:left-[-260px] xl:left-[-190px] left-[-120px] 3xl:top-[75%] xl:top-[100%] top-[100%] -translate-y-1/2"
                 />
               </div>
             </div>
