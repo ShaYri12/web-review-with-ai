@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       screens: {
-        "2xl": "1400px", // Override the default `2xl` if needed
-        "3xl": "1600px", // New breakpoint at 1600px
+        "2xl": "1400px", 
+        "3xl": "3000px", 
       },
       colors: {
         cyan: "#18D1A1",
