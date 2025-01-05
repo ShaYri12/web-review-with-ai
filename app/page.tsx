@@ -119,14 +119,11 @@ export default function Home() {
                 <div className="relative md:mx-0 mx-auto">
                   <div className="3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
                     <Image
-                      src="/assets/pages.svg"
+                      src="/assets/pages.png"
                       alt="pages"
                       width={261}
                       height={316}
-                      quality={100}  
-                      className="w-full h-auto"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"  
-                      priority  
+                      priority
                     />
                     <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan flex items-center justify-center">
                       2
