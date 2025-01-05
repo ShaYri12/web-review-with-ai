@@ -119,7 +119,7 @@ export default function Home() {
                 <div className="relative md:mx-0 mx-auto">
                   <div className="3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
                     <Image
-                      src="/assets/pages.png"
+                      src="/assets/page1.png"
                       alt="pages"
                       width={261}
                       height={316}
