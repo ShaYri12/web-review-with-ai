@@ -117,14 +117,44 @@ export default function Home() {
                 </div>
 
                 <div className="relative md:mx-0 mx-auto">
-                  <div className="3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
-                    <Image
-                      src="/assets/page1.png"
-                      alt="pages"
-                      width={261}
-                      height={316}
-                      priority
-                    />
+                  <div className="">
+                    <div className="relative 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                      {/* First page - back */}
+                      <div className="absolute right-0 top-8 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                        <Image
+                          src="/assets/page3.png"
+                          alt="Website Review Page 3"
+                          width={160}
+                          height={190}
+                          priority
+                          className="shadow-lg ms-auto"
+                        />
+                      </div>
+
+                      {/* Second page - middle */}
+                      <div className="absolute left-1/2 -translate-x-1/2 top-4 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                        <Image
+                          src="/assets/page2.png"
+                          alt="Website Review Page 2"
+                          width={160}
+                          height={190}
+                          priority
+                          className="shadow-lg mx-auto"
+                        />
+                      </div>
+
+                      {/* Third page - front */}
+                      <div className="relative left-0 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                        <Image
+                          src="/assets/page1.png"
+                          alt="Website Review Page 1"
+                          width={160}
+                          height={190}
+                          priority
+                          className="shadow-lg relative left-0"
+                        />
+                      </div>
+                    </div>
                     <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan flex items-center justify-center">
                       2
                     </span>
