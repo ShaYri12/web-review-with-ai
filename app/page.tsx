@@ -126,7 +126,7 @@ export default function Home() {
                       quality={100}  
                       className="w-full h-auto"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"  
-                      priority // Load image immediately
+                      priority  
                     />
                     <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan flex items-center justify-center">
                       2
