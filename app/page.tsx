@@ -29,7 +29,7 @@ export default function Home() {
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
           <div className="">
             <div className="flex items-center space-x-4">
-              <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[90px] 2xl:leading-[130px] lg:leading-[110px] md:leading-[90px] sm:leading-[80px] leading-[50px]">
+              <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[90px]">
                 Review your Website with AI{" "}
                 <span className="inline-flex items-center">
                   <Image
@@ -120,38 +120,38 @@ export default function Home() {
                   <div className="">
                     <div className="relative 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
                       {/* First page - back */}
-                      <div className="absolute right-0 top-8 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                      <div className="absolute right-0 top-8 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
                         <Image
                           src="/assets/page3.png"
                           alt="Website Review Page 3"
-                          width={160}
-                          height={190}
+                          width={167}
+                          height={216.12}
                           priority
-                          className="shadow-lg ms-auto"
+                          className="shadow-lg ms-auto object-contain"
                         />
                       </div>
 
                       {/* Second page - middle */}
-                      <div className="absolute left-1/2 -translate-x-1/2 top-4 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                      <div className="absolute left-1/2 -translate-x-1/2 top-4 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
                         <Image
                           src="/assets/page2.png"
                           alt="Website Review Page 2"
-                          width={160}
-                          height={190}
+                          width={167}
+                          height={216.12}
                           priority
-                          className="shadow-lg mx-auto"
+                          className="shadow-lg mx-auto object-contain"
                         />
                       </div>
 
                       {/* Third page - front */}
-                      <div className="relative left-0 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[316px] mt-[20px]">
+                      <div className="relative left-0 3xl:w-[261px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
                         <Image
                           src="/assets/page1.png"
                           alt="Website Review Page 1"
-                          width={160}
-                          height={190}
+                          width={167}
+                          height={216.12}
                           priority
-                          className="shadow-lg relative left-0"
+                          className="shadow-lg relative left-0 object-contain"
                         />
                       </div>
                     </div>
