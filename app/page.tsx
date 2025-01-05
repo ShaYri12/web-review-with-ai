@@ -123,6 +123,8 @@ export default function Home() {
                       alt="pages"
                       width={261}
                       height={316}
+                      layout="fill"
+                      objectFit="contain"
                       priority
                     />
                     <span className="lg:flex hidden absolute left-[-70px] top-0 3xl:w-[50px] w-[40px] 3xl:h-[50px] h-[40px] rounded-full 3xl:text-[30px] lg:text-[24px] text-[20px] font-bold bg-cyan flex items-center justify-center">
