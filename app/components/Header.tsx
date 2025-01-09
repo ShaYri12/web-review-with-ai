@@ -58,9 +58,9 @@ const Header: React.FC = () => {
             About
           </Link>
           <Link
-            href="/how"
+            href="/how-does-it-works"
             className={`3xl:text-[25px] md:text-[18px] font-[400] ${
-              pathname === "/how"
+              pathname === "/how-does-it-works"
                 ? "text-cyan"
                 : "text-[#FFFFFF] hover:text-emerald-300"
             }`}
@@ -113,9 +113,9 @@ const Header: React.FC = () => {
               About
             </Link>
             <Link
-              href="/how"
+              href="/how-does-it-works"
               className={`text-[18px] font-[400] ${
-                pathname === "/how"
+                pathname === "/how-does-it-works"
                   ? "text-cyan"
                   : "text-[#FFFFFF] hover:text-emerald-300"
               }`}
