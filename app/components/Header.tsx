@@ -1,12 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef, MutableRefObject } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // Import usePathname
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const pathname = usePathname(); // Get the current route
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -37,27 +39,33 @@ const Header: React.FC = () => {
         <div className="hidden md:flex 3xl:gap-[100px] lg:gap-[70px] md:gap-[50px] gap-6">
           <Link
             href="/"
-            className="text-cyan hover:text-emerald-300 3xl:text-[25px] md:text-[18px] font-[400]"
+            className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+              pathname === "/"
+                ? "text-cyan"
+                : "text-[#FFFFFF] hover:text-emerald-300"
+            }`}
           >
             Home
           </Link>
           <Link
             href="/about"
-            className="text-[#FFFFFF] hover:text-emerald-300 3xl:text-[25px] md:text-[18px] font-[400]"
+            className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+              pathname === "/about"
+                ? "text-cyan"
+                : "text-[#FFFFFF] hover:text-emerald-300"
+            }`}
           >
             About
           </Link>
           <Link
             href="/how"
-            className="text-[#FFFFFF] hover:text-emerald-300 3xl:text-[25px] md:text-[18px] font-[400]"
+            className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+              pathname === "/how"
+                ? "text-cyan"
+                : "text-[#FFFFFF] hover:text-emerald-300"
+            }`}
           >
             How does it work?
-          </Link>
-          <Link
-            href="/blog"
-            className="text-[#FFFFFF] hover:text-emerald-300 3xl:text-[25px] md:text-[18px] font-[400]"
-          >
-            Blog
           </Link>
         </div>
       </div>
@@ -84,31 +92,36 @@ const Header: React.FC = () => {
           <div className="flex flex-col space-y-4">
             <Link
               href="/"
-              className="text-cyan hover:text-emerald-300 text-[18px] font-[400]"
+              className={`text-[18px] font-[400] ${
+                pathname === "/"
+                  ? "text-emerald-300"
+                  : "text-[#FFFFFF] hover:text-emerald-300"
+              }`}
               onClick={closeMenu}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="text-[#FFFFFF] hover:text-emerald-300 text-[18px] font-[400]"
+              className={`text-[18px] font-[400] ${
+                pathname === "/about"
+                  ? "text-cyan"
+                  : "text-[#FFFFFF] hover:text-emerald-300"
+              }`}
               onClick={closeMenu}
             >
               About
             </Link>
             <Link
               href="/how"
-              className="text-[#FFFFFF] hover:text-emerald-300 text-[18px] font-[400]"
+              className={`text-[18px] font-[400] ${
+                pathname === "/how"
+                  ? "text-cyan"
+                  : "text-[#FFFFFF] hover:text-emerald-300"
+              }`}
               onClick={closeMenu}
             >
               How does it work?
-            </Link>
-            <Link
-              href="/blog"
-              className="text-[#FFFFFF] hover:text-emerald-300 text-[18px] font-[400]"
-              onClick={closeMenu}
-            >
-              Blog
             </Link>
           </div>
         </div>

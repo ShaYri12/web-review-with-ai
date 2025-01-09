@@ -7,53 +7,63 @@ interface ProgressProps {
 }
 
 export default function Progress({ isOpen, onComplete }: ProgressProps) {
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState<number | string>(5); // Allow number or string
   const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (!isOpen) {
-      setProgress(0);
+      setProgress(5);
+      setMessage("");
       return;
     }
 
+    // Set initial progress and message
+    setProgress(5);
+    setMessage("Deploying AI agents to review your site");
+
     const intervals = [
       {
-        progress: 5,
-        time: 2000,
-        message: "Deploying AI agents to review your site",
-      },
-      {
         progress: 25,
-        time: 4000,
+        time: 2000,
         message: "Evaluating SEO and engagement metrics",
       },
       {
         progress: 50,
-        time: 6000,
+        time: 4000,
         message: "Modeling conversion probability algorithms",
       },
       {
         progress: 75,
-        time: 8000,
+        time: 6000,
         message: "Analyzing semantic web metrics for growth opportunity",
       },
       {
         progress: 100,
-        time: 10000,
+        time: 8000,
         message: "Constructing tailored optimization strategy",
+      },
+      {
+        progress: "Done!",
+        time: 10000,
+        message: "Report ready!",
       },
     ];
 
-    intervals.forEach(({ progress, time, message }) => {
-      const timeout = setTimeout(() => {
-        setProgress(progress);
-        setMessage(message);
-        if (progress === 100) {
-          setTimeout(onComplete, 1000);
-        }
-      }, time);
-      return () => clearTimeout(timeout);
-    });
+    const timeouts: NodeJS.Timeout[] = intervals.map(
+      ({ progress, time, message }) =>
+        setTimeout(() => {
+          setProgress(progress);
+          setMessage(message);
+          if (progress === "Done!") {
+            setTimeout(onComplete, 2000); // Call onComplete after 2 seconds of "Done!" message
+          }
+        }, time)
+    );
+
+    return () => {
+      // Clear all timeouts if component unmounts or `isOpen` changes
+      timeouts.forEach(clearTimeout);
+    };
   }, [isOpen, onComplete]);
 
   if (!isOpen) return null;
@@ -89,14 +99,18 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
               className="stroke-cyan fill-none"
               strokeWidth="15"
               strokeDasharray={`${2 * Math.PI * 45}%`}
-              strokeDashoffset={`${2 * Math.PI * 45 * (1 - progress / 100)}%`}
+              strokeDashoffset={`${
+                typeof progress === "number"
+                  ? 2 * Math.PI * 45 * (1 - progress / 100)
+                  : 0
+              }%`}
               strokeLinecap="round"
             />
           </svg>
           {/* Percentage Text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
             <span className="text-3xl sm:text-4xl md:text-[64px] 3xl:text-[100px] font-bold text-black">
-              {progress}%
+              {typeof progress === "number" ? `${progress}%` : progress}
             </span>
           </div>
         </div>

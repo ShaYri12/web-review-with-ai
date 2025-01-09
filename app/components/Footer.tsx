@@ -9,13 +9,25 @@ const Footer = () => {
     <footer className="px-4 lg:px-[24px] py-4 md:py-6 3xl:py-[32px] mt-[40px] lg:mt-[70px] w-full">
       <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto flex flex-wrap gap-4 justify-between items-center">
         <div className="flex space-x-4">
-          <Link href="#" className="text-white hover:text-cyan">
+          <Link
+            href="https://www.facebook.com/"
+            target="_blank"
+            className="text-white hover:text-cyan"
+          >
             <FaFacebook className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
           </Link>
-          <Link href="#" className="text-white hover:text-cyan">
+          <Link
+            href="https://www.instagram.com/"
+            target="_blank"
+            className="text-white hover:text-cyan"
+          >
             <BsInstagram className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
           </Link>
-          <Link href="#" className="text-white hover:text-cyan">
+          <Link
+            href="https://www.linkedin.com/"
+            target="_blank"
+            className="text-white hover:text-cyan"
+          >
             <FaLinkedin className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
           </Link>
         </div>
