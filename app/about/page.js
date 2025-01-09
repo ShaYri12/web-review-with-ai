@@ -5,24 +5,26 @@ import Header from "../components/Header";
 
 export default function About() {
   return (
-    <div className="h-full flex flex-col justify-between min-h-full items-center bg-[#252A2E] text-white">
+    <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
+      {/* Polygon Design Image */}
       <img
         src="/assets/polygon-design.svg"
         alt="polygon-design"
-        className="absolute right-0 top-0 z-1 h-fit"
+        className="fixed right-0 top-0 z-1 h-screen w-auto"
       />
+
       <Header />
 
       <main className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] w-full relative z-[0]">
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
-          <div className="xl:max-w-[53%] lg:max-w-[60%]">
+          <div className="xl:max-w-[71%] lg:max-w-[60%] pb-[30px]">
             {/* Story Section */}
-            <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px] lg:mb-[20px]">
+            <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px] lg:mb-[20px] sm:mb-4 mb-3">
               <span className="text-white">Our </span>
               <span className="text-emerald-400">story</span>
             </h1>
 
-            <p className="text-base sm:text-lg mb-8 sm:mb-12 leading-relaxed text-justify">
+            <p className="3xl:text-[30px] md:text-[24px] sm:text-[20px] md:mb-[40px] mb-[30px] text-justify">
               At Polygonal Research, we believe that you deserve a website that
               tells your story{" "}
               <span className="relative inline-flex">
@@ -43,17 +45,17 @@ export default function About() {
 
             {/* Contact Form */}
             <div className="mt-12 sm:mt-16 max-w-[496px]">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">
+              <h2 className="text-[20px] md:text-[28px] lg:text-[35px] font-bold mb-3 md:mb-[20px] xl:mb-[32px]">
                 Contact Us
               </h2>
               <form
                 onSubmit={(e) => e.preventDefault()}
-                className="space-y-6 text-gray-900"
+                className="space-y-[15px]"
               >
                 <div>
                   <label
                     htmlFor="firstName"
-                    className="block mb-2 text-sm text-gray-300"
+                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
                   >
                     First Name
                   </label>
@@ -62,7 +64,7 @@ export default function About() {
                     id="firstName"
                     name="firstName"
                     aria-label="First Name"
-                    className="w-full p-2 bg-white rounded"
+                    className="w-full p-2 bg-white rounded text-black"
                     required
                     minLength={2}
                   />
@@ -71,7 +73,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="lastName"
-                    className="block mb-2 text-sm text-gray-300"
+                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
                   >
                     Last Name
                   </label>
@@ -80,7 +82,7 @@ export default function About() {
                     id="lastName"
                     name="lastName"
                     aria-label="Last Name"
-                    className="w-full p-2 bg-white rounded"
+                    className="w-full p-2 bg-white rounded text-black"
                     required
                     minLength={2}
                   />
@@ -89,7 +91,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm text-gray-300"
+                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
                   >
                     Email
                   </label>
@@ -98,7 +100,7 @@ export default function About() {
                     id="email"
                     name="email"
                     aria-label="Email"
-                    className="w-full p-2 bg-white rounded"
+                    className="w-full p-2 bg-white rounded text-black"
                     required
                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                   />
@@ -107,7 +109,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block mb-2 text-sm text-gray-300"
+                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
                   >
                     Message
                   </label>
@@ -116,13 +118,13 @@ export default function About() {
                     name="message"
                     rows={6}
                     aria-label="Message"
-                    className="w-full p-2 bg-white rounded"
+                    className="w-full p-2 bg-white rounded text-black"
                     required
                     minLength={10}
                   />
                 </div>
 
-                <div className="flex items-start gap-2">
+                <div className="flex items-start gap-2 md:gap-3 xl:gap-[15px] pb-2 cursor-pointer">
                   <input
                     type="checkbox"
                     id="consent"
@@ -133,7 +135,7 @@ export default function About() {
                   />
                   <label
                     htmlFor="consent"
-                    className="text-sm text-gray-300 leading-tight"
+                    className="text-sm md:text-[16px] lg:text-[18px] xl:text-[20px] text-gray-300 leading-tight cursor-pointer"
                   >
                     I accept that Polygonal Research may send me, via email,
                     information about marketing, sales, and new information. I
@@ -143,7 +145,7 @@ export default function About() {
 
                 <button
                   type="submit"
-                  className="w-full bg-emerald-400 text-gray-900 py-3 rounded font-medium hover:bg-emerald-500 transition-colors"
+                  className="w-full bg-cyan text-white 2xl:text-[25px] lg:text-[20px] md:text-[18px] py-[6px] rounded-[5px] font-[400] hover:bg-emerald-500 transition-colors"
                 >
                   Submit
                 </button>
