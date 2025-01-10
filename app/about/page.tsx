@@ -135,7 +135,7 @@ export default function About() {
                   />
                   <label
                     htmlFor="consent"
-                    className="text-sm md:text-[16px] lg:text-[18px] xl:text-[20px] text-gray-300 leading-tight cursor-pointer"
+                    className="text-sm md:text-[16px] lg:text-[18px] xl:text-[20px] text-white cursor-pointer"
                   >
                     I accept that Polygonal Research may send me, via email,
                     information about marketing, sales, and new information. I
