@@ -7,9 +7,9 @@ export default function HowDoesItWorks() {
       <Header />
 
       <main className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] w-full relative z-[0]">
-        <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto grid md:grid-cols-[1fr,2.3fr] gap-12 items-start">
+        <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto grid md:grid-cols-[1fr,2.3fr] gap-8 md:gap-12 items-start">
           {/* Left Column */}
-          <div className="lg:space-y-[42px] md:space-y-[30px] space-y-[20px]">
+          <div className="lg:space-y-[42px] md:space-y-[30px] sm:space-y-[20px] space-y-[10px]">
             <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[100px] 2xl:leading-[102px]">
               How does <br className="md:flex hidden" /> it{" "}
               <span className="text-cyan">work?</span>
