@@ -3,7 +3,10 @@ type GradeProps = {
   className?: string;
 };
 
-export function GradeBadge({ grade, className = "w-8 h-8" }: GradeProps) {
+export function GradeBadge({
+  grade,
+  className = "xl:w-[37.52px] xl:min-w-[37.52px] lg:w-[34px] lg:min-w-[34px] md:w-[30px] md:min-w-[30px] w-[28px] min-w-[28px] xl:h-[37.52px] lg:h-[34px] md:h-[30px] h-[28px] border-[2px] 2xl:text-[20px] xl:text-[19px] lg:text-[18px] md:text-[16px] text-[14px]",
+}: GradeProps) {
   const getGradeColor = (grade: string) => {
     const colors: Record<string, string> = {
       A: "bg-[#0E8B6E]",
@@ -20,7 +23,7 @@ export function GradeBadge({ grade, className = "w-8 h-8" }: GradeProps) {
     <span
       className={`${getGradeColor(
         grade
-      )} rounded-full flex items-center justify-center border-[4.5px] border-white text-white font-bold 2xl:text-[30px] xl:text-[30px] lg:text-[20px] md:text-[18px] text-[16px] ${className}`}
+      )} rounded-full flex items-center justify-center border-white text-white font-bold ${className}`}
     >
       {grade}
     </span>
