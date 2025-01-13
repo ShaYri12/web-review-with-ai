@@ -33,9 +33,8 @@ export default function About() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Construct email data
     const emailData = {
-      to: "polygonalresearchllc@gmail.com", // Send email to this address
+      to: "polygonalresearchllc@gmail.com", // Replace with your email
       subject: "New Contact Form Submission",
       body: `
         Name: ${formData.firstName} ${formData.lastName}
@@ -45,10 +44,10 @@ export default function About() {
     };
 
     try {
-      // Send email to your address
-      await axios.post("/api/send-email", emailData);
+      // Send the email
+      await axios.post("/api/sendEmail", emailData);
 
-      // If consent is checked, add the user to Mailchimp
+      // Add user to Mailchimp if consent is given
       if (formData.consent) {
         const mailchimpData = {
           email_address: formData.email,
@@ -63,13 +62,21 @@ export default function About() {
       }
 
       alert("Form submitted successfully!");
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+        consent: false,
+      });
     } catch (error) {
-      console.error("Error submitting form", error);
+      console.error("Error submitting form:", error);
       alert("There was an error. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
+
   return (
     <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       {/* Polygon Design Image */}
