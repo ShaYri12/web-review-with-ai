@@ -96,7 +96,11 @@ export default function ReportPage() {
       content: (
         <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Quia beatae debitis
+          ipsum illo quisquam vitae saepe distinctio, reiciendis numquam
+          aspernatur quo molestiae est optio expedita eligendi accusamus,
+          officia omnis tempore?
         </p>
       ),
     },
@@ -176,9 +180,9 @@ export default function ReportPage() {
             </div>
           </div>
 
-          <div className="grid lg:grid-cols-[300px,1fr] lg:gap-8 gap-[100px]">
+          <div className="relative grid lg:grid-cols-[300px,1fr] lg:gap-8 gap-[100px]">
             {/* Left Sidebar */}
-            <div>
+            <div className="sticky top-1 left-0 h-max">
               <div className="relative">
                 <div className="rounded-[10px] overflow-hidden">
                   <Image
@@ -197,16 +201,16 @@ export default function ReportPage() {
                 </div>
               </div>
 
-              <div className="2xl:space-y-[45px] xl:space-y-[40px] lg:space-y-[35px] md:space-y-[25px] space-y-[20px] 2xl:mt-[40px] xl:mt-[35px] lg:mt-[30px] md:mt-[25px] mt-[20px]">
+              <div className="2xl:space-y-[40px] xl:space-y-[35px] lg:space-y-[30px] md:space-y-[25px] space-y-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
                 <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
                   Get your full detailed PDF report by email today!
                 </h2>
-                <button className="w-full bg-cyan text-white 2xl:py-[18px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[30px] xl:text-[25px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors">
+                <button className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors">
                   Unlock ($4.99)
                 </button>
               </div>
 
-              <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[70px] xl:mt-[60px] lg:mt-[50px] md:mt-[40px] mt-[30px]">
+              <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[55px] xl:mt-[50px] lg:mt-[40px] md:mt-[30px] mt-[20px]">
                 {/* First page - back */}
                 <div className="absolute right-0 top-8 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
                   <Image

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 interface ProgressProps {
   isOpen: boolean;
@@ -55,9 +56,9 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
           setProgress(progress);
           setMessage(message);
           if (progress === "Done!") {
-            // Set cookie and navigate to "your-report" page after 2 seconds
+            // Set cookie using js-cookie
             setTimeout(() => {
-              document.cookie = "reportGenerated=true; path=/";
+              Cookies.set("report_Generated", "true", { path: "/" }); // Create cookie using js-cookie
               window.location.href = "/your-report";
               onComplete();
             }, 2000);

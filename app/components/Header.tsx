@@ -28,7 +28,7 @@ const Header: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const reportCookie = Cookies.get("report_created");
+    const reportCookie = Cookies.get("report_Generated");
     if (reportCookie) {
       setHasReport(true);
     }

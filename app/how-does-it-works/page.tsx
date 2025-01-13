@@ -1,7 +1,36 @@
+"use client";
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function HowDoesItWorks() {
+  const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.5 } // 50% of the element needs to be visible
+    );
+
+    const stepElement = document.querySelector("#step3");
+    if (stepElement) observer.observe(stepElement);
+
+    return () => {
+      if (stepElement) observer.unobserve(stepElement);
+    };
+  }, []);
+
+  const handleInputClick = () => {
+    router.push("/");
+  };
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
@@ -35,12 +64,16 @@ export default function HowDoesItWorks() {
                 <p className="text-[16px] lg:text-[18px] 2xl:text-[19px] pb-2">
                   Getting started is easy! Just enter your website URL on the
                   home screen and click{" "}
-                  <span className="text-cyan">Analyze</span>.
+                  <Link href="/" className="text-cyan">
+                    Analyze
+                  </Link>
+                  .
                 </p>
                 <input
                   type="url"
                   placeholder="https://www.yourwebsite.com"
-                  className="w-full bg-[#31373D] rounded md:px-[18px] md:px-4 px-[10px] py-2 md:py-[10.5px] lg:text-[20px] md:text-[18px] text-base text-white placeholder-[#252A2E] focus:outline-none focus:ring-2 focus:ring-cyan rounded-[10px]"
+                  className="w-full bg-[#31373D] rounded md:px-[18px] md:px-4 px-[10px] py-2 md:py-[10.5px] lg:text-[20px] md:text-[18px] text-base text-white placeholder-[#252A2E] focus:outline-none focus:ring-2 focus:ring-cyan rounded-[10px] cursor-pointer"
+                  onClick={handleInputClick}
                 />
               </div>
             </div>
@@ -61,9 +94,9 @@ export default function HowDoesItWorks() {
                   affecting your business.
                 </p>
                 <div className="md:space-y-2 space-y-[6px]">
-                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#0E8B6E80] rounded-full w-full"></div>
-                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#11977D80] rounded-full w-[70%]"></div>
-                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#18D1A180] rounded-full w-[35%]"></div>
+                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#0E8B6E] rounded-full w-full glow-background delay-0"></div>
+                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#11977D] rounded-full w-[70%] glow-background delay-200"></div>
+                  <div className="h-[8px] md:h-[10px] lg:h-[12px] xl:h-[15px] bg-[#18D1A1] rounded-full w-[35%] glow-background delay-400"></div>
                 </div>
               </div>
             </div>
@@ -82,7 +115,7 @@ export default function HowDoesItWorks() {
                   Receive a <span className="text-cyan">detailed report</span>{" "}
                   with actionable insights to drive revenue now!
                 </p>
-                <div className="max-w-[652px]">
+                <div id="step3" className="max-w-[652px]">
                   <div className="flex items-center justify-between mb-1">
                     <div className="text-[16px] lg:text-[18px] 2xl:text-[20px]">
                       Overall Score
@@ -90,7 +123,11 @@ export default function HowDoesItWorks() {
                     <div className="text-2xl font-[700] text-cyan">A-</div>
                   </div>
                   <div className="h-[8px] md:h-[10px] rounded-full bg-[#31373D]">
-                    <div className="h-[8px] md:h-[10px] rounded-full bg-cyan w-[75%]"></div>
+                    <div
+                      className={`progress-bar h-[8px] md:h-[10px] rounded-full bg-cyan ${
+                        isVisible ? "animate-progress" : ""
+                      }`}
+                    ></div>
                   </div>
                 </div>
               </div>

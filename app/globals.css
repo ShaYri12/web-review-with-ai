@@ -37,3 +37,44 @@ html {
     max-width: 100% !important;
   }
 }
+
+@keyframes backgroundGlow {
+  0% {
+    background-color: #0e8b6e;
+  }
+  50% {
+    background-color: #18d1a1;
+  }
+  100% {
+    background-color: #0e8b6e;
+  }
+}
+
+.glow-background {
+  animation: backgroundGlow 1.5s ease-in-out infinite alternate;
+}
+
+.delay-0 {
+  animation-delay: 0s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 75%;
+  }
+}
+
+.animate-progress {
+  animation: progressFill 2s ease-out forwards;
+}
