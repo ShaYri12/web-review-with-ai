@@ -9,6 +9,7 @@ import { LuPencil } from "react-icons/lu";
 import { FaRegHeart, FaRegKeyboard } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { GiAlliedStar } from "react-icons/gi";
+import SocialLink from "../components/SocialLink";
 
 interface SectionProps {
   icon: React.ElementType;
@@ -23,7 +24,7 @@ const Section: React.FC<SectionProps> = ({
   grade,
   content,
 }) => (
-  <div className="bg-white text-white rounded-[10px] overflow-hidden">
+  <div className="bg-white text-white rounded-[10px] overflow-hidden ">
     <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
       <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
         <Icon
@@ -36,7 +37,7 @@ const Section: React.FC<SectionProps> = ({
       </div>
       <GradeBadge grade={grade} />
     </div>
-    <div className="md:px-[18px] px-4 py-[14px]">{content}</div>
+    <div className="md:px-[18px] px-4 py-[14px] blur-sm">{content}</div>
   </div>
 );
 
@@ -180,72 +181,78 @@ export default function ReportPage() {
             </div>
           </div>
 
-          <div className="relative grid lg:grid-cols-[300px,1fr] lg:gap-8 gap-[100px]">
+          <div className=" grid lg:grid-cols-[300px,1fr] h-full lg:gap-8 gap-[100px]">
             {/* Left Sidebar */}
-            <div className="sticky top-1 left-0 h-max">
-              <div className="relative">
-                <div className="rounded-[10px] overflow-hidden">
-                  <Image
-                    src="/assets/laptop.png"
-                    alt="Website Screenshot"
-                    width={545}
-                    height={337}
-                    className="w-full rounded-[10px] overflow-hidden"
-                  />
+            <div className="relative h-full">
+              <div>
+                <div className="relative">
+                  <div className="rounded-[10px] overflow-hidden">
+                    <Image
+                      src="/assets/laptop.png"
+                      alt="Website Screenshot"
+                      width={545}
+                      height={337}
+                      className="w-full rounded-[10px] overflow-hidden"
+                    />
+                  </div>
+                  <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">
+                    <GradeBadge
+                      grade="B"
+                      className="md:w-[70px] sm:w-[55px] w-[48px] md:h-[70px]  sm:h-[55px] h-[48px] sm:border-[4.5px] border-[4px] 2xl:text-[30px] xl:text-[30px] lg:text-[20px] md:text-[18px] text-[16px]"
+                    />
+                  </div>
                 </div>
-                <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">
-                  <GradeBadge
-                    grade="B-"
-                    className="md:w-[70px] sm:w-[55px] w-[48px] md:h-[70px] md:h-[55px] sm:h-[55px] h-[48px] sm:border-[4.5px] border-[4px] 2xl:text-[30px] xl:text-[30px] lg:text-[20px] md:text-[18px] text-[16px]"
-                  />
+
+                <div className="2xl:space-y-[40px] xl:space-y-[35px] lg:space-y-[30px] md:space-y-[25px] space-y-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
+                  <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
+                    Get your full detailed PDF report by email today!
+                  </h2>
+                  <button className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors">
+                    Unlock ($4.99)
+                  </button>
                 </div>
+
+                <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[55px] xl:mt-[50px] lg:mt-[40px] md:mt-[30px] mt-[20px]">
+                  {/* First page - back */}
+                  <div className="absolute right-0 top-8 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
+                    <Image
+                      src="/assets/page3.png"
+                      alt="Website Review Page 3"
+                      width={167}
+                      height={216.12}
+                      priority
+                      className="shadow-lg ms-auto object-contain"
+                    />
+                  </div>
+
+                  {/* Second page - middle */}
+                  <div className="absolute left-1/2 -translate-x-1/2 top-4 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
+                    <Image
+                      src="/assets/page2.png"
+                      alt="Website Review Page 2"
+                      width={167}
+                      height={216.12}
+                      priority
+                      className="shadow-lg mx-auto object-contain"
+                    />
+                  </div>
+
+                  {/* Third page - front */}
+                  <div className="relative left-0 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
+                    <Image
+                      src="/assets/page1.png"
+                      alt="Website Review Page 1"
+                      width={167}
+                      height={216.12}
+                      priority
+                      className="shadow-lg relative left-0 object-contain"
+                    />
+                  </div>
+                </div>
+
               </div>
-
-              <div className="2xl:space-y-[40px] xl:space-y-[35px] lg:space-y-[30px] md:space-y-[25px] space-y-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
-                <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
-                  Get your full detailed PDF report by email today!
-                </h2>
-                <button className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors">
-                  Unlock ($4.99)
-                </button>
-              </div>
-
-              <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[55px] xl:mt-[50px] lg:mt-[40px] md:mt-[30px] mt-[20px]">
-                {/* First page - back */}
-                <div className="absolute right-0 top-8 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
-                  <Image
-                    src="/assets/page3.png"
-                    alt="Website Review Page 3"
-                    width={167}
-                    height={216.12}
-                    priority
-                    className="shadow-lg ms-auto object-contain"
-                  />
-                </div>
-
-                {/* Second page - middle */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-4 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
-                  <Image
-                    src="/assets/page2.png"
-                    alt="Website Review Page 2"
-                    width={167}
-                    height={216.12}
-                    priority
-                    className="shadow-lg mx-auto object-contain"
-                  />
-                </div>
-
-                {/* Third page - front */}
-                <div className="relative left-0 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
-                  <Image
-                    src="/assets/page1.png"
-                    alt="Website Review Page 1"
-                    width={167}
-                    height={216.12}
-                    priority
-                    className="shadow-lg relative left-0 object-contain"
-                  />
-                </div>
+              <div className="lg:block hidden absolute bottom-0 left-0">
+              <SocialLink />
               </div>
             </div>
 
@@ -291,9 +298,11 @@ export default function ReportPage() {
               </div>
             </div>
           </div>
+          <div className="block lg:hidden mt-10">
+              <SocialLink />
+              </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }
