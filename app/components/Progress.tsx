@@ -55,7 +55,12 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
           setProgress(progress);
           setMessage(message);
           if (progress === "Done!") {
-            setTimeout(onComplete, 2000); // Call onComplete after 2 seconds of "Done!" message
+            // Set cookie and navigate to "your-report" page after 2 seconds
+            setTimeout(() => {
+              document.cookie = "reportGenerated=true; path=/";
+              window.location.href = "/your-report";
+              onComplete();
+            }, 2000);
           }
         }, time)
     );

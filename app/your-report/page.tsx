@@ -4,13 +4,148 @@ import { BiPlusCircle } from "react-icons/bi";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { MdOutlineImage } from "react-icons/md";
-import { IoPersonCircleOutline } from "react-icons/io5";
+import { IoPersonCircleOutline, IoSearchSharp } from "react-icons/io5";
 import { LuPencil } from "react-icons/lu";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaRegKeyboard } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { GiAlliedStar } from "react-icons/gi";
 
+interface SectionProps {
+  icon: React.ElementType;
+  title: string;
+  grade: string;
+  content: React.ReactNode;
+}
+
+const Section: React.FC<SectionProps> = ({
+  icon: Icon,
+  title,
+  grade,
+  content,
+}) => (
+  <div className="bg-white text-white rounded-[10px] overflow-hidden">
+    <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
+      <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
+        <Icon
+          size={24}
+          className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
+        />
+        <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
+          {title}
+        </h2>
+      </div>
+      <GradeBadge grade={grade} />
+    </div>
+    <div className="md:px-[18px] px-4 py-[14px]">{content}</div>
+  </div>
+);
+
 export default function ReportPage() {
+  const sections = [
+    {
+      icon: MdOutlineImage,
+      title: "Visual Appeal",
+      grade: "C",
+      content: (
+        <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          <li>Image quality / relevance</li>
+          <li>Use of white space</li>
+          <li>Color scheme</li>
+          <li>Visual "freshness", modernity</li>
+        </ul>
+      ),
+    },
+    {
+      icon: IoPersonCircleOutline,
+      title: "Usability",
+      grade: "A",
+      content: (
+        <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          <li>Ease of navigation</li>
+          <li>Mobile responsiveness</li>
+          <li>Page load speed</li>
+        </ul>
+      ),
+    },
+    {
+      icon: LuPencil,
+      title: "Content",
+      grade: "A",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      ),
+    },
+    {
+      icon: FaRegHeart,
+      title: "Branding",
+      grade: "B",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      ),
+    },
+    {
+      icon: IoMdCheckmark,
+      title: "Trustworthy",
+      grade: "C",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      ),
+    },
+    {
+      icon: GiAlliedStar,
+      title: "Call to Action",
+      grade: "F",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Culpa suscipit ea
+          assumenda eos laudantium qui officia necessitatibus quibusdam, aliquam
+          magni et animi at placeat atque dolore optio asperiores, molestiae
+          nihil?
+        </p>
+      ),
+    },
+    {
+      icon: FaRegKeyboard,
+      title: "Functionality",
+      grade: "F",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+          exercitationem assumenda, dolore amet illum quam nam eius quia
+          nesciunt, corporis iste iusto cumque animi fuga eveniet sequi
+          consequatur incidunt odit!
+        </p>
+      ),
+    },
+    {
+      icon: IoSearchSharp,
+      title: "SEO",
+      grade: "C-",
+      content: (
+        <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem,
+          ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde
+          maiores ducimus adipisci, aspernatur impedit assumenda numquam veniam.
+          Ad eaque recusandae doloremque harum vitae id? Consequatur magni quas
+          mollitia ut!
+        </p>
+      ),
+    },
+  ];
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
@@ -146,144 +281,9 @@ export default function ReportPage() {
 
               {/* Visual Appeal Section */}
               <div className="grid md:grid-cols-2 gap-6">
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-                      <MdOutlineImage
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Visual Appeal
-                      </h2>
-                    </div>
-                    <GradeBadge grade="C" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      <li>Image quality / relevance</li>
-                      <li>Use of white space</li>
-                      <li>Color scheme</li>
-                      <li>Visual "freshness", modernity</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-                      <IoPersonCircleOutline
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Usability
-                      </h2>
-                    </div>
-                    <GradeBadge grade="A" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      <li>Ease of navigation</li>
-                      <li>Mobile responsiveness</li>
-                      <li>Page load speed</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-                      <LuPencil
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Content
-                      </h2>
-                    </div>
-                    <GradeBadge grade="A" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-                      <FaRegHeart
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Branding
-                      </h2>
-                    </div>
-                    <GradeBadge grade="B" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-                      <IoMdCheckmark
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Trustworthy
-                      </h2>
-                    </div>
-                    <GradeBadge grade="C" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-white text-white rounded-[10px] overflow-hidden">
-                  <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                    <div className="flex items-center 2xl:gap-[18px] xl:gap-[16px] lg:gap-[14px] md:gap-[12px] gap-2">
-                      <GiAlliedStar
-                        size={24}
-                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-                      />
-
-                      <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
-                        Call to Action
-                      </h2>
-                    </div>
-                    <GradeBadge grade="F" />
-                  </div>
-                  <div className="md:px-[18px] px-4 py-[14px]">
-                    <p className="text-[#252A2E] xl:text-[18px] lg:text-[17px] md:text-[16px] text-[15px]">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua.
-                    </p>
-                  </div>
-                </div>
+                {sections.map((section, index) => (
+                  <Section key={index} {...section} />
+                ))}
               </div>
             </div>
           </div>

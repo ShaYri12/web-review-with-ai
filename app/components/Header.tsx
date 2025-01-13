@@ -1,14 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef, MutableRefObject } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import usePathname
+import { usePathname } from "next/navigation";
+import Cookies from "js-cookie";
 import { FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement | null>(null);
-  const pathname = usePathname(); // Get the current route
+  const pathname = usePathname();
+  const [hasReport, setHasReport] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
@@ -23,6 +25,13 @@ const Header: React.FC = () => {
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  useEffect(() => {
+    const reportCookie = Cookies.get("report_created");
+    if (reportCookie) {
+      setHasReport(true);
+    }
   }, []);
 
   return (
@@ -67,6 +76,18 @@ const Header: React.FC = () => {
           >
             How does it work?
           </Link>
+          {hasReport && (
+            <Link
+              href="/your-report"
+              className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+                pathname === "/your-report"
+                  ? "text-cyan"
+                  : "text-[#FFFFFF] hover:text-emerald-300"
+              }`}
+            >
+              Your Report
+            </Link>
+          )}
         </div>
       </div>
 
@@ -123,6 +144,18 @@ const Header: React.FC = () => {
             >
               How does it work?
             </Link>
+            {hasReport && (
+              <Link
+                href="/your-report"
+                className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+                  pathname === "/your-report"
+                    ? "text-cyan"
+                    : "text-[#FFFFFF] hover:text-emerald-300"
+                }`}
+              >
+                Your Report
+              </Link>
+            )}
           </div>
         </div>
       </div>
