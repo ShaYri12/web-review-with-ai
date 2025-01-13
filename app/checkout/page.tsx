@@ -6,18 +6,21 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Link from "next/link";
+import FooterLogo from "../components/FooterLogo";
+import SocialLink from "../components/SocialLink";
 
 export default function Checkout() {
   const [step, setStep] = useState("payment");
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
-      <Header />
+      {/* <Header /> */}
 
-      <main className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] w-full relative z-[0]">
-        <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
+      <main className="w-full relative z-[0]">
+        <div className=" w-full mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Payment Form */}
-            <div className="lg:max-w-[510px] my-auto">
+            <div className="lg:max-w-[510px] mx-auto pb-[50px]">
+              <Header />
               <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px] lg:mb-[20px] sm:mb-3 mb-2">
                 Checkout
               </h1>
@@ -212,7 +215,7 @@ export default function Checkout() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between 2xl:pt-[65px] xl:pt-[55px] lg:pt-[45px] md:pt-[35px] pt-[25px] gap-4">
+                  <div className="mb-[50px] flex items-center justify-between 2xl:pt-[65px] xl:pt-[55px] lg:pt-[45px] md:pt-[35px] pt-[25px] gap-4">
                     <button
                       onClick={() => {
                         setStep("payment");
@@ -235,7 +238,7 @@ export default function Checkout() {
               )}
 
               {step === "review" && (
-                <div className="2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px] lg:mt-[30px] mt-[25px]">
+                <div className="min-h-screen 2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px] lg:mt-[30px] mt-[25px]">
                   <div className="flex gap-4 items-center justify-between">
                     <div className="flex md:gap-4 gap-3 items-center">
                       <div className="relative w-[48px] min-w-[48px] h-[62.49px]">
@@ -303,27 +306,33 @@ export default function Checkout() {
                   </div>
                 </div>
               )}
+              <SocialLink/>
             </div>
 
             {/* Preview Cards */}
-            <div className="flex flex-wrap  p-4 gap-[20px] justify-center items-center bg-[#31373D]">
-              <Image
-                src="/assets/checkout-img1.png"
-                alt="web-img-1"
-                width={280}
-                height={380}
-              />
-              <Image
-                src="/assets/checkout-img2.png"
-                alt="web-img-2"
-                width={280}
-                height={380}
-              />
+            <div className="  bg-[#31373D] h-full">
+              <div className="flex items-center justify-center gap-[20px] h-full ">
+                <Image
+                  src="/assets/checkout-img1.png"
+                  alt="web-img-1"
+                  width={280}
+                  height={380}
+                />
+                <Image
+                  src="/assets/checkout-img2.png"
+                  alt="web-img-2"
+                  width={280}
+                  height={380}
+                />
+              </div>
+              <div className=" absolute right-10 bottom-8">
+                <FooterLogo />
+              </div>
             </div>
           </div>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaFacebook, FaLinkedin } from "react-icons/fa";
-import { BsInstagram } from "react-icons/bs";
+
+import FooterLogo from "./FooterLogo";
+import SocialLink from "./SocialLink";
 
 const Footer = ({ social = true }) => {
   return (
@@ -13,38 +14,9 @@ const Footer = ({ social = true }) => {
             !social && "invisible"
           }`}
         >
-          <Link
-            href="https://www.facebook.com/"
-            target="_blank"
-            className="text-white hover:text-cyan"
-          >
-            <FaFacebook className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
-          </Link>
-          <Link
-            href="https://www.instagram.com/"
-            target="_blank"
-            className="text-white hover:text-cyan"
-          >
-            <BsInstagram className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
-          </Link>
-          <Link
-            href="https://www.linkedin.com/"
-            target="_blank"
-            className="text-white hover:text-cyan"
-          >
-            <FaLinkedin className="xl:w-[24px] w-[20px] xl:h-[24px] h-[20px]" />
-          </Link>
+          <SocialLink/>
         </div>
-        <div className="flex items-center lg:space-x-[10px] space-x-2 text-white 3xl:text-[30px] lg:text-[24px] md:text-[18px] text-base">
-          <Image
-            src="/assets/box.svg"
-            alt="box"
-            width={27.5}
-            height={31.6}
-            className="2xl:w-[27.5px] lg:w-[25px] w-[24px] 2xl:h-[31.6px] lg:h-[25px] h-[24px]"
-          />
-          <span>Polygonal Research, LLC</span>
-        </div>
+        <FooterLogo/>
       </div>
     </footer>
   );
