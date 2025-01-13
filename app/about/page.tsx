@@ -1,9 +1,75 @@
 "use client";
-
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import React, { useState } from "react";
+import axios from "axios";
 
 export default function About() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+    consent: false,
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target;
+
+    const checked =
+      type === "checkbox" ? (e.target as HTMLInputElement).checked : undefined;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Construct email data
+    const emailData = {
+      to: "polygonalresearchllc@gmail.com", // Send email to this address
+      subject: "New Contact Form Submission",
+      body: `
+        Name: ${formData.firstName} ${formData.lastName}
+        Email: ${formData.email}
+        Message: ${formData.message}
+      `,
+    };
+
+    try {
+      // Send email to your address
+      await axios.post("/api/send-email", emailData);
+
+      // If consent is checked, add the user to Mailchimp
+      if (formData.consent) {
+        const mailchimpData = {
+          email_address: formData.email,
+          status: "subscribed",
+          merge_fields: {
+            FNAME: formData.firstName,
+            LNAME: formData.lastName,
+          },
+        };
+
+        await axios.post("/api/mailchimp", mailchimpData);
+      }
+
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Error submitting form", error);
+      alert("There was an error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       {/* Polygon Design Image */}
@@ -48,10 +114,7 @@ export default function About() {
               <h2 className="text-[20px] md:text-[28px] lg:text-[35px] font-bold mb-3 md:mb-[20px] xl:mb-[32px]">
                 Contact Us
               </h2>
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="space-y-[15px]"
-              >
+              <form onSubmit={handleSubmit} className="space-y-[15px]">
                 <div>
                   <label
                     htmlFor="firstName"
@@ -64,9 +127,11 @@ export default function About() {
                     id="firstName"
                     name="firstName"
                     aria-label="First Name"
-                    className="w-full p-2 bg-white rounded text-black"
+                    className="w-full p-2 bg-white rounded text-black focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
                     minLength={2}
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -82,9 +147,11 @@ export default function About() {
                     id="lastName"
                     name="lastName"
                     aria-label="Last Name"
-                    className="w-full p-2 bg-white rounded text-black"
+                    className="w-full p-2 bg-white rounded text-black focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
                     minLength={2}
+                    value={formData.lastName}
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -100,9 +167,11 @@ export default function About() {
                     id="email"
                     name="email"
                     aria-label="Email"
-                    className="w-full p-2 bg-white rounded text-black"
+                    className="w-full p-2 bg-white rounded text-black focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    value={formData.email}
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -118,9 +187,11 @@ export default function About() {
                     name="message"
                     rows={6}
                     aria-label="Message"
-                    className="w-full p-2 bg-white rounded text-black"
+                    className="w-full p-2 bg-white rounded text-black focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
                     minLength={10}
+                    value={formData.message}
+                    onChange={handleInputChange}
                   />
                 </div>
 
@@ -130,8 +201,10 @@ export default function About() {
                     id="consent"
                     name="consent"
                     className="mt-1"
-                    aria-label="Consent to email notifications"
+                    aria-label="Consent to email notifications focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
+                    checked={formData.consent}
+                    onChange={handleInputChange}
                   />
                   <label
                     htmlFor="consent"
@@ -146,8 +219,9 @@ export default function About() {
                 <button
                   type="submit"
                   className="w-full bg-cyan text-white 2xl:text-[25px] lg:text-[20px] md:text-[18px] py-[6px] rounded-[5px] font-[400] hover:bg-emerald-500 transition-colors"
+                  disabled={isSubmitting}
                 >
-                  Submit
+                  {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
               </form>
             </div>
