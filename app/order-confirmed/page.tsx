@@ -7,7 +7,7 @@ import Header from "../components/Header";
 
 export default function OrderConfirmed() {
   return (
-    <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
+    <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
 
       <main className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] w-full relative z-[0]">
