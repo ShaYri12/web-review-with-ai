@@ -9,6 +9,14 @@ import Payment from "./Payment";
 import Review from "./Review";
 import { PaymentData, ReviewData } from "./paymentTypes";
 import Footer from "../components/Footer";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import convertToSubCurrency from "../lib/convertToSubCurrency";
+
+if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+  throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
+}
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 type StepType = "payment" | "review";
 
@@ -23,12 +31,28 @@ export default function Checkout() {
     email: "",
     name: "",
   });
+
   const [reviewData, setReviewData] = useState<ReviewData>({
     image: "/assets/checkout-img1.png",
     title: "Customized website review",
     subTotal: 4.99,
     taxes: 0.25,
   });
+
+  const totalAmount = reviewData.subTotal + reviewData.taxes;
+
+  const appearance = {
+    theme: "stripe" as const,
+    variables: {
+      fontSizeBase: "16px", // Ensure readability
+    },
+    rules: {
+      ".Label": {
+        color: "#ffffff", // Explicitly set the label color to white
+        marginBottom: "8px",
+      },
+    },
+  };
 
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
@@ -56,24 +80,26 @@ export default function Checkout() {
                       Review
                     </span>
                   </div>
-
-                  {step === "payment" && (
-                    <Payment
-                      step={step}
-                      setStep={setStep}
-                      paymentData={paymentData}
-                      setPaymentData={setPaymentData}
-                    />
-                  )}
-
-                  {step === "review" && (
-                    <Review
-                      step={step}
-                      setStep={setStep}
-                      paymentData={paymentData}
-                      reviewData={reviewData}
-                    />
-                  )}
+                  <div className="min-h-screen lg:mt-[30px] mt-[25px]">
+                    <Elements
+                      stripe={stripePromise}
+                      options={{
+                        mode: "payment",
+                        amount: convertToSubCurrency(totalAmount),
+                        currency: "usd",
+                        appearance,
+                      }}
+                    >
+                      <Payment
+                        step={step}
+                        setStep={setStep}
+                        paymentData={paymentData}
+                        setPaymentData={setPaymentData}
+                        totalAmount={totalAmount}
+                        reviewData={reviewData}
+                      />
+                    </Elements>
+                  </div>
                   <div className="w-full md:flex hidden">
                     <SocialLink />
                   </div>

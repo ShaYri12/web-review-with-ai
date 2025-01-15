@@ -18,7 +18,7 @@ const Review = ({
   reviewData: ReviewData;
 }) => {
   return (
-    <div className="2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px] lg:mt-[30px] mt-[25px]">
+    <div className="2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px]">
       <div className="flex gap-4 items-center justify-between">
         <div className="flex md:gap-4 gap-3 items-center">
           <div className="relative w-[48px] min-w-[48px] h-[62.49px]">
@@ -67,23 +67,6 @@ const Review = ({
           ${reviewData.subTotal + reviewData.taxes}
         </span>
       </h4>
-      <div className="flex items-center justify-between gap-4">
-        <button
-          onClick={() => {
-            setStep("payment");
-          }}
-          className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
-        >
-          <MdKeyboardArrowRight className="w-[22px] h-[22px] rotate-180 text-white" />
-          Back
-        </button>
-        <Link
-          href="/order-confirmed"
-          className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white text-center px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
-        >
-          Check out
-        </Link>
-      </div>
     </div>
   );
 };

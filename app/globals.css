@@ -78,3 +78,7 @@ html {
 .animate-progress {
   animation: progressFill 2s ease-out forwards;
 }
+
+.Label {
+  color: white !important;
+}

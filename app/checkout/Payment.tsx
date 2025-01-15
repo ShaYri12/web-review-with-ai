@@ -1,267 +1,159 @@
 "use client";
 
-import Image from "next/image";
-import React, { useState } from "react";
-import { BsFillCreditCardFill } from "react-icons/bs";
+import React, { useEffect, useState } from "react";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { PaymentData } from "./paymentTypes";
+import { PaymentData, ReviewData } from "./paymentTypes";
+import {
+  useStripe,
+  useElements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
+import convertToSubCurrency from "../lib/convertToSubCurrency";
+import Link from "next/link";
+import Review from "./Review";
 
 type StepType = "payment" | "review";
 
-const Payment = ({
+export const Payment = ({
   step,
   setStep,
   setPaymentData,
   paymentData,
+  totalAmount,
+  reviewData,
 }: {
   step: StepType;
   setStep: React.Dispatch<React.SetStateAction<StepType>>;
   setPaymentData: React.Dispatch<React.SetStateAction<PaymentData>>;
   paymentData: PaymentData;
+  totalAmount: number;
+  reviewData: ReviewData;
 }) => {
-  const [formData, setFormData] = useState<PaymentData>(paymentData);
+  const stripe = useStripe();
+  const elements = useElements();
+  const [errorMessage, setErrorMessage] = useState<string>();
+  const [clientSecret, setClientSecret] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const countries = [
-    { value: "", label: "Select" },
-    { value: "US", label: "United States" },
-    { value: "CA", label: "Canada" },
-    { value: "GB", label: "United Kingdom" },
-  ];
+  useEffect(() => {
+    fetch("/api/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ totalAmount: convertToSubCurrency(totalAmount) }),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecret(data.clientSecret));
+  }, [totalAmount]);
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.id]: e.target.value,
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+
+    if (!stripe || !elements) {
+      return;
+    }
+
+    const { error: submitError } = await elements.submit();
+
+    if (submitError) {
+      setErrorMessage(submitError.message);
+      setLoading(false);
+      return;
+    }
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url: `http://www.localhost:3000/order-confirmed?amount=${totalAmount}`,
+      },
     });
+
+    if (error) {
+      setErrorMessage(error.message);
+    } else {
+      // Redirect happens automatically, no need to manually handle it here.
+    }
+
+    setLoading(false);
   };
 
-  const handleReview = () => {
-    setPaymentData((prev) => {
-      const updatedPaymentData = { ...formData };
-      console.log("Updated PaymentData:", updatedPaymentData);
-      return updatedPaymentData;
-    });
-    setStep("review");
-  };
+  if (!clientSecret || !stripe || !elements) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div
+          className="my-auto inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
-      {/* Payment Methods */}
-      <div className="grid grid-cols-3 2xl:gap-[32px] xl:gap-[28px] lg:gap-[22px] md:gap-[22px] sm:gap-[16px] gap-[8px] lg:mt-[30px] mt-[25px]">
-        <button
-          onClick={() => {
-            setFormData({ ...formData, paymentOption: "card" });
-          }}
-          className={`bg-white p-[9px] rounded-[5px] flex flex-col items-start justify-center hover:bg-gray-100 transition-colors border-[3px] ${
-            formData.paymentOption === "card"
-              ? "border-[#0270DE]"
-              : "border-white"
-          } gap-1`}
-        >
-          <BsFillCreditCardFill className="w-[16px] h-[16px] text-[#0270DE]" />
-          <span className="text-[#0270DE] font-[700] text-[14px] text-left">
-            Card
-          </span>
-        </button>
-        <button
-          onClick={() => {
-            setFormData({ ...formData, paymentOption: "google" });
-          }}
-          className={`bg-white p-[9px] rounded-[5px] flex flex-col items-start justify-center hover:bg-gray-100 transition-colors border-[3px] ${
-            formData.paymentOption === "google"
-              ? "border-[#0270DE]"
-              : "border-white"
-          } gap-1`}
-        >
-          <Image
-            src="/assets/google-pay.svg"
-            alt="google-pay"
-            width={30}
-            height={16}
-          />
-          <span className="text-[#6D6E78] font-[700] text-[14px] text-left">
-            Google Pay
-          </span>
-        </button>
-        <button
-          onClick={() => {
-            setFormData({ ...formData, paymentOption: "apple" });
-          }}
-          className={`bg-white p-[9px] rounded-[5px] flex flex-col items-start justify-center hover:bg-gray-100 transition-colors border-[3px] ${
-            formData.paymentOption === "apple"
-              ? "border-[#0270DE]"
-              : "border-white"
-          } gap-1`}
-        >
-          <Image
-            src="/assets/apple-pay.svg"
-            alt="apple-pay"
-            width={24.99}
-            height={16}
-          />
-          <span className="text-[#6D6E78] font-[700] text-[14px] text-left">
-            Apple Pay
-          </span>
-        </button>
-      </div>
+      {/* Payment Form */}
+      <form onSubmit={handleSubmit}>
+        <div className={`${step === "review" && "h-0 invisible"}`}>
+          {/* Use the PaymentElement for the entire payment form */}
+          {clientSecret && <PaymentElement />}
 
-      {/* Card Details */}
-      <div className="space-y-[12px] mt-[12px]">
-        <div>
-          <label htmlFor="cardNumber" className="block text-[14.88px] mb-2">
-            Card number
-          </label>
-          <div className="relative">
-            <input
-              type="text"
-              id="cardNumber"
-              placeholder="1234 1234 1234 1234"
-              className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px] pr-[124px]"
-              value={formData.cardNumber}
-              onChange={handleInputChange}
-            />
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex gap-[3px]">
-              <Image
-                src="/assets/master-card.svg"
-                alt="Mastercard"
-                width={24}
-                height={16}
-                className="h-[16] w-auto"
-              />
-              <Image
-                src="/assets/visa-card.svg"
-                alt="Visa"
-                width={24}
-                height={16}
-                className="h-[16] w-auto"
-              />
-              <Image
-                src="/assets/amex-card.svg"
-                alt="Discover"
-                width={24}
-                height={16}
-                className="h-[16] w-auto"
-              />
-              <Image
-                src="/assets/discover-card.svg"
-                alt="Discover"
-                width={24}
-                height={16}
-                className="h-[16] w-auto"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label htmlFor="expiry" className="block text-[14.88px] mb-2">
-              Expiration
-            </label>
-            <input
-              type="text"
-              id="expiry"
-              placeholder="MM / YY"
-              className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px]"
-              value={formData.expiry}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="cvc" className="block text-[14.88px] mb-2">
-              CVC
-            </label>
-            <div className="relative">
-              <input
-                type="text"
-                id="cvc"
-                placeholder="CVC"
-                className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px] pr-[40px]"
-                value={formData.cvc}
-                onChange={handleInputChange}
-              />
-              <Image
-                src="/assets/credit-card-cvc.svg"
-                alt="Mastercard"
-                width={24}
-                height={24}
-                className="h-[24] w-auto absolute right-3 top-1/2 -translate-y-1/2"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="country" className="block text-[14.88px] mb-2">
-            Country
-          </label>
-          <div className="relative w-full">
-            <select
-              id="country"
-              className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px] appearance-none cursor-pointer"
-              value={formData.country}
-              onChange={handleInputChange}
+          {errorMessage && <div>{errorMessage}</div>}
+          <div className="mb-[50px] flex items-center justify-between 2xl:pt-[65px] xl:pt-[55px] lg:pt-[45px] md:pt-[35px] pt-[25px] gap-4">
+            <Link
+              href="/"
+              className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
             >
-              {countries.map((country) => (
-                <option key={country.value} value={country.value}>
-                  {country.label}
-                </option>
-              ))}
-            </select>
-            <MdKeyboardArrowRight
-              size={22}
-              className="rotate-[90deg] w-[21px] absolute right-3 text-[#6D6E78] top-1/2 -translate-y-1/2"
-            />
+              <MdKeyboardArrowRight className="w-[22px] h-[22px] rotate-180 text-white" />
+              Back
+            </Link>
+            <button
+              disabled={!stripe || loading}
+              onClick={() => {
+                setStep("review");
+              }}
+              type="button" // Prevent form submission here
+              className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
+            >
+              {!loading ? "Review" : "Processing..."}
+            </button>
           </div>
         </div>
 
-        <div>
-          <label htmlFor="email" className="block text-[14.88px] mb-2">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px]"
-            value={formData.email}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="name" className="block text-[14.88px] mb-2">
-            Full name
-          </label>
-          <input
-            type="text"
-            id="name"
-            placeholder="First and last name"
-            className="w-full bg-white text-gray-900 placeholder-[#77787D] p-3 rounded-[5px]"
-            value={formData.name}
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-
-      <div className="mb-[50px] flex items-center justify-between 2xl:pt-[65px] xl:pt-[55px] lg:pt-[45px] md:pt-[35px] pt-[25px] gap-4">
-        <button
-          onClick={() => {
-            setStep("payment");
-          }}
-          className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
-        >
-          <MdKeyboardArrowRight className="w-[22px] h-[22px] rotate-180 text-white" />
-          Back
-        </button>
-        <button
-          onClick={handleReview}
-          className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
-        >
-          Review
-        </button>
-      </div>
+        {step === "review" && (
+          <div className="2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px]">
+            <Review
+              step={step}
+              setStep={setStep}
+              paymentData={paymentData}
+              reviewData={reviewData}
+            />
+            <div className="flex items-center justify-between gap-4">
+              <button
+                onClick={() => {
+                  setStep("payment");
+                }}
+                type="button" // Prevent form submission here
+                className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
+              >
+                <MdKeyboardArrowRight className="w-[22px] h-[22px] rotate-180 text-white" />
+                Back
+              </button>
+              <button
+                type="submit" // This will trigger form submission
+                className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white text-center px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
+              >
+                {!loading ? "Check out" : "Processing..."}
+              </button>
+            </div>
+          </div>
+        )}
+      </form>
     </>
   );
 };
