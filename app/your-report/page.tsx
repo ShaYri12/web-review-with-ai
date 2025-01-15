@@ -182,10 +182,10 @@ export default function ReportPage() {
             </div>
           </div>
 
-          <div className=" grid lg:grid-cols-[300px,1fr] h-full lg:gap-8 gap-[100px]">
+          <div className="relative grid lg:grid-cols-[300px,1fr] h-full lg:gap-8 gap-[100px]">
             {/* Left Sidebar */}
-            <div className="relative h-full">
-              <div>
+            <div className="h-full">
+              <div className="sticky top-1 left-0 h-max lg:pb-[160px]">
                 <div className="relative">
                   <div className="rounded-[10px] overflow-hidden">
                     <Image
@@ -204,13 +204,13 @@ export default function ReportPage() {
                   </div>
                 </div>
 
-                <div className="2xl:space-y-[40px] xl:space-y-[35px] lg:space-y-[30px] md:space-y-[25px] space-y-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
+                <div className="flex flex-col 2xl:gap-[40px] xl:gap-[35px] lg:gap-[30px] md:gap-[25px] gap-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
                   <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
                     Get your full detailed PDF report by email today!
                   </h2>
                   <Link
                     href="/checkout"
-                    className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors"
+                    className="w-full text-center bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors"
                   >
                     Unlock ($4.99)
                   </Link>
