@@ -163,7 +163,6 @@ export default function About() {
                     aria-label="Email"
                     className="w-full p-2 bg-white rounded text-black focus:outline-none focus:ring-2 focus:ring-cyan"
                     required
-                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     value={formData.email}
                     onChange={handleInputChange}
                   />
