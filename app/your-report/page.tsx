@@ -10,6 +10,7 @@ import { FaRegHeart, FaRegKeyboard } from "react-icons/fa";
 import { IoMdCheckmark } from "react-icons/io";
 import { GiAlliedStar } from "react-icons/gi";
 import SocialLink from "../components/SocialLink";
+import Link from "next/link";
 
 interface SectionProps {
   icon: React.ElementType;
@@ -207,9 +208,12 @@ export default function ReportPage() {
                   <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
                     Get your full detailed PDF report by email today!
                   </h2>
-                  <button className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors">
+                  <Link
+                    href="/checkout"
+                    className="w-full bg-cyan text-white 2xl:py-[16px] xl:py-[14px] lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden 2xl:text-[27px] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors"
+                  >
                     Unlock ($4.99)
-                  </button>
+                  </Link>
                 </div>
 
                 <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[55px] xl:mt-[50px] lg:mt-[40px] md:mt-[30px] mt-[20px]">
@@ -249,10 +253,9 @@ export default function ReportPage() {
                     />
                   </div>
                 </div>
-
               </div>
               <div className="lg:block hidden absolute bottom-0 left-0">
-              <SocialLink />
+                <SocialLink />
               </div>
             </div>
 
@@ -299,8 +302,8 @@ export default function ReportPage() {
             </div>
           </div>
           <div className="block lg:hidden mt-10">
-              <SocialLink />
-              </div>
+            <SocialLink />
+          </div>
         </div>
       </main>
     </div>
