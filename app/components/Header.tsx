@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           </Link>
           <Link
             href="/how-does-it-works"
-            className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+            className={`3xl:text-[25px] md:text-[18px] font-[400] w-max ${
               pathname === "/how-does-it-works"
                 ? "text-cyan"
                 : "text-[#FFFFFF] hover:text-emerald-300"
@@ -79,7 +79,7 @@ const Header: React.FC = () => {
           {hasReport && (
             <Link
               href="/your-report"
-              className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+              className={`3xl:text-[25px] md:text-[18px] font-[400] w-max ${
                 pathname === "/your-report"
                   ? "text-cyan"
                   : "text-[#FFFFFF] hover:text-emerald-300"
