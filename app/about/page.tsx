@@ -2,7 +2,6 @@
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import React, { useState } from "react";
-import axios from "axios";
 
 export default function About() {
   const [formData, setFormData] = useState({
@@ -14,6 +13,7 @@ export default function About() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -32,46 +32,33 @@ export default function About() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    const emailData = {
-      to: "polygonalresearchllc@gmail.com", // Replace with your email
-      subject: "New Contact Form Submission",
-      body: `
-        Name: ${formData.firstName} ${formData.lastName}
-        Email: ${formData.email}
-        Message: ${formData.message}
-      `,
-    };
+    setSubmitStatus(null);
 
     try {
-      // Send the email
-      await axios.post("/api/sendEmail", emailData);
-
-      // Add user to Mailchimp if consent is given
-      if (formData.consent) {
-        const mailchimpData = {
-          email_address: formData.email,
-          status: "subscribed",
-          merge_fields: {
-            FNAME: formData.firstName,
-            LNAME: formData.lastName,
-          },
-        };
-
-        await axios.post("/api/mailchimp", mailchimpData);
-      }
-
-      alert("Form submitted successfully!");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        message: "",
-        consent: false,
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus("Thank you for subscribing!");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          message: "",
+          consent: false,
+        });
+      } else {
+        setSubmitStatus(`Error: ${data.error}`);
+      }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      alert("There was an error. Please try again.");
+      setSubmitStatus("An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -230,6 +217,18 @@ export default function About() {
                 >
                   {isSubmitting ? "Submitting..." : "Submit"}
                 </button>
+
+                {submitStatus && (
+                  <p
+                    className={`text-center ${
+                      submitStatus.startsWith("Error")
+                        ? "text-red-500"
+                        : "text-green-500"
+                    }`}
+                  >
+                    {submitStatus}
+                  </p>
+                )}
               </form>
             </div>
           </div>
