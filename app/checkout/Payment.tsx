@@ -67,7 +67,7 @@ export const Payment = ({
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/order-confirmed?amount=${totalAmount}`,
+        return_url: `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?amount=${totalAmount}`,
       },
     });
 
