@@ -6,8 +6,7 @@ import Header from "../components/Header";
 import FooterLogo from "../components/FooterLogo";
 import SocialLink from "../components/SocialLink";
 import Payment from "./Payment";
-import Review from "./Review";
-import { PaymentData, ReviewData } from "./paymentTypes";
+import { ReviewData } from "./paymentTypes";
 import Footer from "../components/Footer";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -22,15 +21,6 @@ type StepType = "payment" | "review";
 
 export default function Checkout() {
   const [step, setStep] = useState<StepType>("payment");
-  const [paymentData, setPaymentData] = useState<PaymentData>({
-    paymentOption: "card",
-    cardNumber: "",
-    expiry: "",
-    cvc: "",
-    country: "",
-    email: "",
-    name: "",
-  });
 
   const [reviewData, setReviewData] = useState<ReviewData>({
     image: "/assets/checkout-img1.png",
@@ -93,8 +83,6 @@ export default function Checkout() {
                       <Payment
                         step={step}
                         setStep={setStep}
-                        paymentData={paymentData}
-                        setPaymentData={setPaymentData}
                         totalAmount={totalAmount}
                         reviewData={reviewData}
                       />

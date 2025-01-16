@@ -1,22 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { PaymentData, ReviewData } from "./paymentTypes";
-import Link from "next/link";
+import { ReviewData } from "./paymentTypes";
 
-type StepType = "payment" | "review"; // Define possible step values
-
-const Review = ({
-  step,
-  setStep,
-  paymentData,
-  reviewData,
-}: {
-  step: StepType;
-  setStep: React.Dispatch<React.SetStateAction<StepType>>;
-  paymentData: PaymentData;
-  reviewData: ReviewData;
-}) => {
+const Review = ({ reviewData }: { reviewData: ReviewData }) => {
   return (
     <div className="2xl:space-y-[30px] xl:space-y-[25px] lg:space-y-[20px] space-y-[18px]">
       <div className="flex gap-4 items-center justify-between">
