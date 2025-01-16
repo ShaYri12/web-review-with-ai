@@ -45,7 +45,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
+    <div className="lg:min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <main className="w-full relative z-[0]">
         <div className=" w-full mx-auto">
           <div className="grid lg:grid-cols-2 md:gap-12">
@@ -70,7 +70,7 @@ export default function Checkout() {
                       Review
                     </span>
                   </div>
-                  <div className="min-h-screen lg:mt-[30px] mt-[25px]">
+                  <div className="lg:min-h-screen lg:mt-[30px] mt-[25px]">
                     <Elements
                       stripe={stripePromise}
                       options={{
