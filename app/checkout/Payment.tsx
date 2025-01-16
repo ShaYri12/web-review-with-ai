@@ -64,6 +64,7 @@ export const Payment = ({
 
     const { error } = await stripe.confirmPayment({
       elements,
+      clientSecret,
       confirmParams: {
         return_url: `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?amount=${totalAmount}`,
         payment_method_data: isCardPayment
@@ -79,13 +80,11 @@ export const Payment = ({
 
     if (error) {
       setErrorMessage(error.message);
+    } else {
+      // Redirect happens automatically, no need to manually handle it here.
     }
 
     setLoading(false);
-  };
-
-  const handlePaymentMethodChange = (event: any) => {
-    setIsCardPayment(event.value.type === "card");
   };
 
   if (!clientSecret || !stripe || !elements) {
@@ -103,11 +102,19 @@ export const Payment = ({
     );
   }
 
+  const handlePaymentMethodChange = (event: any) => {
+    setIsCardPayment(event.value.type === "card");
+  };
+
   return (
     <>
+      {/* Payment Form */}
       <form onSubmit={handleSubmit}>
         <div className={`${step === "review" && "h-0 invisible"}`}>
-          <PaymentElement onChange={handlePaymentMethodChange} />
+          {/* Use the PaymentElement for the entire payment form */}
+          {clientSecret && (
+            <PaymentElement onChange={handlePaymentMethodChange} />
+          )}
 
           {isCardPayment && (
             <div className="mt-[10px] space-y-[10px]">
@@ -143,9 +150,7 @@ export const Payment = ({
             </div>
           )}
 
-          {errorMessage && (
-            <div className="text-red-500 mt-2">{errorMessage}</div>
-          )}
+          {errorMessage && <div>{errorMessage}</div>}
           <div className="mb-[50px] flex items-center justify-between 2xl:pt-[65px] xl:pt-[55px] lg:pt-[45px] md:pt-[35px] pt-[25px] gap-4">
             <Link
               href="/"
@@ -159,7 +164,7 @@ export const Payment = ({
               onClick={() => {
                 setStep("review");
               }}
-              type="button"
+              type="button" // Prevent form submission here
               className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
             >
               {!loading ? "Review" : "Processing..."}
@@ -175,14 +180,14 @@ export const Payment = ({
                 onClick={() => {
                   setStep("payment");
                 }}
-                type="button"
+                type="button" // Prevent form submission here
                 className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
               >
                 <MdKeyboardArrowRight className="w-[22px] h-[22px] rotate-180 text-white" />
                 Back
               </button>
               <button
-                type="submit"
+                type="submit" // This will trigger form submission
                 className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white text-center px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
               >
                 {!loading ? "Check out" : "Processing..."}
