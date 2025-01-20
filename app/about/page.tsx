@@ -65,12 +65,12 @@ export default function About() {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
+    <div className="h-screen flex flex-col justify-between items-center   text-white relative">
       {/* Polygon Design Image */}
       <img
         src="/assets/polygon-design.svg"
         alt="polygon-design"
-        className="fixed right-0 top-0 z-1 h-screen w-auto"
+        className="fixed right-0 top-0 -z-10 h-screen w-auto"
       />
 
       <Header />
