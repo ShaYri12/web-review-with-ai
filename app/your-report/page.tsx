@@ -1,7 +1,8 @@
+"use client";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { GradeBadge } from "./GradeBadge";
 import { BiPlusCircle } from "react-icons/bi";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { MdOutlineImage } from "react-icons/md";
 import { IoPersonCircleOutline, IoSearchSharp } from "react-icons/io5";
@@ -50,7 +51,61 @@ const Section: React.FC<SectionProps> = ({
   </div>
 );
 
+function throttle<T extends (...args: any[]) => void>(
+  func: T,
+  limit: number
+): T {
+  let inThrottle: boolean;
+  return function (this: any, ...args: any[]) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  } as T;
+}
+
 export default function ReportPage() {
+  const [isSticky, setIsSticky] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const originalTopRef = useRef<number | null>(null);
+
+  const handleScroll = useCallback(
+    throttle(() => {
+      if (!sectionRef.current) return;
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollY = window.scrollY;
+      const isWindowWide = window.innerWidth >= 1024;
+
+      if (isWindowWide) {
+        setIsSticky(false);
+        return;
+      }
+
+      if (originalTopRef.current === null) {
+        originalTopRef.current = rect.top + scrollY;
+      }
+
+      if (scrollY > originalTopRef.current) {
+        if (!isSticky) setIsSticky(true);
+      } else {
+        if (isSticky) setIsSticky(false);
+      }
+    }, 100),
+    [isSticky]
+  );
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [handleScroll]);
+
   const sections = [
     {
       icon: MdOutlineImage,
@@ -217,7 +272,7 @@ export default function ReportPage() {
 
           <div className="relative grid lg:grid-cols-[300px,1fr] h-full lg:gap-8 gap-[100px]">
             {/* Left Sidebar */}
-            <div className="h-full">
+            <div className="h-full relative z-[2]">
               <div className="sticky top-1 left-0 h-max lg:pb-[160px]">
                 <div className="relative">
                   <div className="rounded-[10px] overflow-hidden relative">
@@ -240,14 +295,22 @@ export default function ReportPage() {
                   </div>
                 </div>
 
-                <div className="bg-[#252A2E] z-40 py-4 sticky top-0 flex flex-col 2xl:gap-[40px] xl:gap-[35px] lg:gap-[30px] md:gap-[25px] gap-[20px] xl:mt-[30px] lg:mt-[25px] md:mt-[20px] mt-[15px]">
+                <div
+                  ref={sectionRef}
+                  className={`bg-[#252A2E] z-40 py-4 flex flex-col 2xl:gap-[40px] xl:gap-[35px] lg:gap-[30px] md:gap-[25px] gap-[20px] xl:mt-[30px] lg:mt-[25px]
+                  ${
+                    isSticky
+                      ? "fixed top-0 left-0 right-0 px-4"
+                      : "relative md:mt-[20px] mt-[15px]"
+                  }`}
+                >
                   <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
                     Get your full detailed PDF report by email today!
                   </h2>
                   <Link
                     href="/checkout"
                     className="relative w-full text-center bg-cyan text-white lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold 
-  transition-all duration-300 ease-in-out shadow-lg animate-shadowPulse hover:bg-emerald-500"
+                   transition-all duration-300 ease-in-out shadow-lg animate-shadowPulse hover:bg-emerald-500"
                   >
                     <span className="relative z-10">Unlock ($4.99)</span>
 
@@ -300,7 +363,7 @@ export default function ReportPage() {
             </div>
 
             {/* Main Content */}
-            <div className="space-y-6">
+            <div className="space-y-6 relative z-[1]">
               {/* Summary Section */}
               <div className="bg-white text-white rounded-[10px] overflow-hidden">
                 <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">

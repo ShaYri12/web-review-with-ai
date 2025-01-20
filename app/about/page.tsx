@@ -34,19 +34,22 @@ export default function About() {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    // Add logic based on consent checkbox value
+    const sendToMailchimp = formData.consent;
+
     try {
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, sendToMailchimp }), // Include sendToMailchimp in the payload
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        setSubmitStatus("Thank you for subscribing!");
+        setSubmitStatus(data.message || "Thank you for submitting!");
         setFormData({
           firstName: "",
           lastName: "",
