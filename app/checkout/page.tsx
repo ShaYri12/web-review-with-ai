@@ -97,7 +97,7 @@ export default function Checkout() {
 
             {/* Preview Cards */}
             <div className="bg-[#31373D] h-full">
-              <div className="flex flex-wrap items-center justify-center gap-[20px] h-full px-4 lg:pt-[100px] lg:pb-[160px] pt-[80px] pb-[80px]">
+              <div className="flex flex-wrap items-center justify-center gap-[20px] h-full px-4 lg:pt-[100px] 2xl:pb-[11vw] lg:pb-[80px] pt-[80px] pb-[80px]">
                 <Image
                   src="/assets/checkout-img1.png"
                   alt="web-img-1"

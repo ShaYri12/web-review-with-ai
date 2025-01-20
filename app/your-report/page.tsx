@@ -27,12 +27,12 @@ const Section: React.FC<SectionProps> = ({
 }) => (
   <div className="bg-white text-white rounded-[10px] overflow-hidden">
     <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-      <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
+      <div className="flex items-center lg:gap-[16px] md:gap-[14px] gap-2">
         <Icon
           size={24}
           className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
         />
-        <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
+        <h2 className="font-[400] lg:text-[21px] md:text-[20px] text-[18px]">
           {title}
         </h2>
       </div>
@@ -190,12 +190,16 @@ export default function ReportPage() {
           {/* Header Card */}
           <div className="bg-white text-[#252A2E] rounded-[20px] xl:px-[48px] lg:px-[42px] md:px-[30px] sm:px-[20px] px-4 xl:py-[42px] lg:py-[38px] md:py-[30px] py-[20px] xl:mb-[62px] lg:mb-[50px] md:mb-[40px] mb-[30px] flex justify-between items-center gap-2 md:flex-nowrap flex-wrap">
             <div>
-              <h1 className="2xl:text-[56px] xl:text-[45px] lg:text-[35px] md:text-[25px] text-[21px] font-bold">
+              <h1 className="2xl:text-[50px] xl:text-[45px] lg:text-[35px] md:text-[25px] text-[21px] font-bold">
                 Your Custom Report
               </h1>
-              <p className="font-[300] 2xl:text-[35px] xl:text-[28px] lg:text-[20px] md:text-[18px] text-base md:mt-1">
+              <Link
+                href="www.yourwebsite.com"
+                target="_blank"
+                className="font-[300] 2xl:text-[30px] xl:text-[25px] lg:text-[20px] md:text-[18px] text-base md:mt-1"
+              >
                 www.yourwebsite.com
-              </p>
+              </Link>
             </div>
             <div className="flex items-center md:gap-2 gap-[6px]">
               <Image
@@ -205,7 +209,7 @@ export default function ReportPage() {
                 height={59.8}
                 className="2xl:w-[52.05px] lg:w-[40px] md:w-[30px] w-[24px] 2xl:h-[59.8px] lg:h-[40px] md:h-[30px] h-[24px]"
               />
-              <span className="font-[600] 2xl:text-[42px] xl:text-[40px] lg:text-[30px] md:text-[20px] text-base">
+              <span className="font-[600] 2xl:text-[35px] xl:text-[30px] lg:text-[25px] md:text-[20px] text-base">
                 Polygonal Research, LLC
               </span>
             </div>
@@ -300,7 +304,7 @@ export default function ReportPage() {
               {/* Summary Section */}
               <div className="bg-white text-white rounded-[10px] overflow-hidden">
                 <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-                  <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
+                  <div className="flex items-center lg:gap-[16px] md:gap-[14px] gap-2">
                     <span>
                       <BiPlusCircle
                         size={24}
@@ -308,7 +312,7 @@ export default function ReportPage() {
                       />
                     </span>
 
-                    <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
+                    <h2 className="font-[400] lg:text-[21px] md:text-[20px] text-[18px]">
                       Summary
                     </h2>
                   </div>
