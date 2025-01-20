@@ -1,40 +1,54 @@
-import Image from "next/image"
-import { GradeBadge } from "./GradeBadge"
-import { BiPlusCircle } from "react-icons/bi"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import { MdOutlineImage } from "react-icons/md"
-import { IoPersonCircleOutline, IoSearchSharp } from "react-icons/io5"
-import { LuPencil } from "react-icons/lu"
-import { FaRegHeart, FaRegKeyboard } from "react-icons/fa"
-import { IoMdCheckmark } from "react-icons/io"
-import { GiAlliedStar } from "react-icons/gi"
-import SocialLink from "../components/SocialLink"
-import Link from "next/link"
+import Image from "next/image";
+import { GradeBadge } from "./GradeBadge";
+import { BiPlusCircle } from "react-icons/bi";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { MdOutlineImage } from "react-icons/md";
+import { IoPersonCircleOutline, IoSearchSharp } from "react-icons/io5";
+import { LuPencil } from "react-icons/lu";
+import { FaRegHeart, FaRegKeyboard } from "react-icons/fa";
+import { IoMdCheckmark } from "react-icons/io";
+import { GiAlliedStar } from "react-icons/gi";
+import SocialLink from "../components/SocialLink";
+import Link from "next/link";
 
 interface SectionProps {
-  icon: React.ElementType
-  title: string
-  grade: string
-  content: React.ReactNode
+  icon: React.ElementType;
+  title: string;
+  grade: string;
+  content: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ icon: Icon, title, grade, content }) => (
+const Section: React.FC<SectionProps> = ({
+  icon: Icon,
+  title,
+  grade,
+  content,
+}) => (
   <div className="bg-white text-white rounded-[10px] overflow-hidden">
     <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
       <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
-        <Icon size={24} className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]" />
-        <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">{title}</h2>
+        <Icon
+          size={24}
+          className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
+        />
+        <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
+          {title}
+        </h2>
       </div>
       <GradeBadge grade={grade} />
     </div>
     <div
-      className={`md:px-[18px] px-4 py-[14px] ${title !== "Visual Appeal" && title !== "Usability" ? "blur-sm select-none" : ""}`}
+      className={`md:px-[18px] px-4 py-[14px] ${
+        title !== "Visual Appeal" && title !== "Usability"
+          ? "blur-sm select-none"
+          : ""
+      }`}
     >
       {content}
     </div>
   </div>
-)
+);
 
 export default function ReportPage() {
   const sections = [
@@ -50,9 +64,15 @@ export default function ReportPage() {
             <li>Color scheme</li>
             <li>Visual "freshness", modernity</li>
           </ul>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
         </div>
       ),
     },
@@ -67,9 +87,15 @@ export default function ReportPage() {
             <li>Mobile responsiveness</li>
             <li>Page load speed</li>
           </ul>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">Lorem ipsum dolar somite. Lorem ipsum dolar somite. </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
+          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
+            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
+          </p>
         </div>
       ),
     },
@@ -79,8 +105,8 @@ export default function ReportPage() {
       grade: "A",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       ),
     },
@@ -90,8 +116,8 @@ export default function ReportPage() {
       grade: "B",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
       ),
     },
@@ -101,9 +127,11 @@ export default function ReportPage() {
       grade: "C",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia beatae debitis ipsum illo quisquam
-          vitae saepe distinctio, reiciendis numquam aspernatur quo molestiae est optio expedita eligendi accusamus,
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Quia beatae debitis
+          ipsum illo quisquam vitae saepe distinctio, reiciendis numquam
+          aspernatur quo molestiae est optio expedita eligendi accusamus,
           officia omnis tempore?
         </p>
       ),
@@ -114,10 +142,12 @@ export default function ReportPage() {
       grade: "F",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa suscipit ea assumenda eos
-          laudantium qui officia necessitatibus quibusdam, aliquam magni et animi at placeat atque dolore optio
-          asperiores, molestiae nihil?
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Culpa suscipit ea
+          assumenda eos laudantium qui officia necessitatibus quibusdam, aliquam
+          magni et animi at placeat atque dolore optio asperiores, molestiae
+          nihil?
         </p>
       ),
     },
@@ -127,10 +157,12 @@ export default function ReportPage() {
       grade: "F",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum exercitationem assumenda,
-          dolore amet illum quam nam eius quia nesciunt, corporis iste iusto cumque animi fuga eveniet sequi consequatur
-          incidunt odit!
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+          exercitationem assumenda, dolore amet illum quam nam eius quia
+          nesciunt, corporis iste iusto cumque animi fuga eveniet sequi
+          consequatur incidunt odit!
         </p>
       ),
     },
@@ -140,14 +172,16 @@ export default function ReportPage() {
       grade: "C-",
       content: (
         <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde maiores ducimus
-          adipisci, aspernatur impedit assumenda numquam veniam. Ad eaque recusandae doloremque harum vitae id?
-          Consequatur magni quas mollitia ut!
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem,
+          ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde
+          maiores ducimus adipisci, aspernatur impedit assumenda numquam veniam.
+          Ad eaque recusandae doloremque harum vitae id? Consequatur magni quas
+          mollitia ut!
         </p>
       ),
     },
-  ]
+  ];
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
@@ -190,7 +224,9 @@ export default function ReportPage() {
                       height={337}
                       className="w-full rounded-[10px] overflow-hidden"
                     />
-                    <h3 className="w-full h-full flex items-center justify-center absolute top-0 text-center font-sans">Your website <br /> screenshot</h3>
+                    <h3 className="w-full h-full flex items-center justify-center absolute top-0 text-center font-sans">
+                      Your website <br /> screenshot
+                    </h3>
                   </div>
                   <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">
                     <GradeBadge
@@ -206,10 +242,13 @@ export default function ReportPage() {
                   </h2>
                   <Link
                     href="/checkout"
-                    className="relative w-full text-center bg-cyan text-white lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold hover:bg-emerald-500 transition-colors animate-pulse"
+                    className="relative w-full text-center bg-cyan text-white lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold 
+  transition-all duration-300 ease-in-out shadow-lg animate-shadowPulse hover:bg-emerald-500"
                   >
                     <span className="relative z-10">Unlock ($4.99)</span>
-                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-75 blur-md animate-glow"></span>
+
+                    {/* Glowing Background */}
+                    <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-75 blur-lg animate-pulse"></span>
                   </Link>
                 </div>
 
@@ -263,10 +302,15 @@ export default function ReportPage() {
                 <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
                   <div className="flex items-center 2xl:gap-[19px] xl:gap-[17px] lg:gap-[16px] md:gap-[14px] gap-2">
                     <span>
-                      <BiPlusCircle size={24} className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]" />
+                      <BiPlusCircle
+                        size={24}
+                        className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
+                      />
                     </span>
 
-                    <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">Summary</h2>
+                    <h2 className="font-[400] xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px]">
+                      Summary
+                    </h2>
                   </div>
                   <GradeBadge grade="B" />
                 </div>
@@ -277,9 +321,10 @@ export default function ReportPage() {
                     <li>Grades for each category</li>
                   </ul>
                   <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip ex ea commodo consequat.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
                   </p>
                 </div>
               </div>
@@ -298,6 +343,5 @@ export default function ReportPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }
-

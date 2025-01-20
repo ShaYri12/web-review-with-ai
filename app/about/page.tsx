@@ -79,12 +79,12 @@ export default function About() {
         <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto">
           <div className="xl:max-w-[71%] lg:max-w-[60%] pb-[30px]">
             {/* Story Section */}
-            <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px] lg:mb-[20px] sm:mb-4 mb-3">
+            <h1 className="xl:font-[800] font-[700] text-[30px] sm:text-[35px] md:text-[45px] lg:text-[50px] xl:text-[60px] mb-3">
               <span className="text-white">Our </span>
               <span className="text-emerald-400">story</span>
             </h1>
 
-            <p className="3xl:text-[30px] md:text-[24px] sm:text-[20px] md:mb-[40px] mb-[30px] text-justify">
+            <p className="md:text-[20px] sm:text-[18px] text-justify">
               At Polygonal Research, we believe that you deserve a website that
               tells your story{" "}
               <span className="relative inline-flex">
@@ -104,15 +104,15 @@ export default function About() {
             </p>
 
             {/* Contact Form */}
-            <div className="mt-12 sm:mt-16 max-w-[496px]">
-              <h2 className="text-[20px] md:text-[28px] lg:text-[35px] font-bold mb-3 md:mb-[20px] xl:mb-[32px]">
+            <div className="mt-12 sm:mt-14 max-w-[496px]">
+              <h2 className="text-[20px] md:text-[28px] lg:text-[35px] font-bold mb-3 md:mb-[18px] xl:mb-[25px]">
                 Contact Us
               </h2>
               <form onSubmit={handleSubmit} className="space-y-[15px]">
                 <div>
                   <label
                     htmlFor="firstName"
-                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
+                    className="block mb-2 text-base md:text-[18px] lg:text-[20px] xl:text-[25px] text-white font-[400]"
                   >
                     First Name
                   </label>
@@ -132,7 +132,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="lastName"
-                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
+                    className="block mb-2 text-base md:text-[18px] lg:text-[20px] xl:text-[25px] text-white font-[400]"
                   >
                     Last Name
                   </label>
@@ -152,7 +152,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
+                    className="block mb-2 text-base md:text-[18px] lg:text-[20px] xl:text-[25px] text-white font-[400]"
                   >
                     Email
                   </label>
@@ -171,7 +171,7 @@ export default function About() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block mb-2 text-[18px] md:text-[22px] lg:text-[25px] xl:text-[30px] text-white font-[400]"
+                    className="block mb-2 text-base md:text-[18px] lg:text-[20px] xl:text-[25px] text-white font-[400]"
                   >
                     Message
                   </label>

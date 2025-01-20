@@ -52,14 +52,14 @@ export default function Checkout() {
             <div className="lg:max-w-[510px] w-full mx-auto pb-[50px]">
               {/* <Header /> */}
               <Header />
-              <div className="px-4 lg:px-[24px] 3xl:py-[47px] py-[23px] w-full relative z-[0]">
+              <div className="px-4 lg:px-[24px] py-[16px] w-full relative z-[0]">
                 <div className="lg:max-w-[560px] mx-auto">
-                  <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px] lg:text-[60px] xl:text-[70px] 3xl:text-[80px] lg:mb-[20px] sm:mb-3 mb-2">
+                  <h1 className="xl:font-[800] font-[700] text-[30px] sm:text-[35px] md:text-[45px] lg:text-[50px] xl:text-[60px] sm:mb-3 mb-2">
                     Checkout
                   </h1>
 
                   {/* Breadcrumb */}
-                  <div className="flex items-center gap-3 xl:text-[20px] md:text-[18px] text-base font-[300]">
+                  <div className="flex items-center gap-3 xl:text-[18px] md:text-[17px] text-base font-[300]">
                     <span className="">Cart</span>
                     <MdKeyboardArrowRight className="w-[22px] h-[22px]" />
                     <span className={`${step === "payment" && "text-cyan"}`}>
@@ -70,7 +70,7 @@ export default function Checkout() {
                       Review
                     </span>
                   </div>
-                  <div className="lg:min-h-screen lg:mt-[30px] mt-[25px]">
+                  <div className="lg:min-h-screen lg:mt-[28px] mt-[25px]">
                     <Elements
                       stripe={stripePromise}
                       options={{
@@ -97,7 +97,7 @@ export default function Checkout() {
 
             {/* Preview Cards */}
             <div className="bg-[#31373D] h-full">
-              <div className="flex flex-wrap items-center justify-center gap-[20px] h-full px-4 py-[80px]">
+              <div className="flex flex-wrap items-center justify-center gap-[20px] h-full px-4 lg:pt-[100px] lg:pb-[160px] pt-[80px] pb-[80px]">
                 <Image
                   src="/assets/checkout-img1.png"
                   alt="web-img-1"
