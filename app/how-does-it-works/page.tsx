@@ -35,33 +35,33 @@ export default function HowDoesItWorks() {
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
 
-      <main className="px-4 lg:px-[24px] pt-4 w-full relative z-[0]">
-        <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto grid md:grid-cols-[1fr,2.3fr] gap-8 md:gap-8 items-start">
+      <main className="px-4 lg:px-[24px] pt-[16px] w-full relative z-[0]">
+        <div className="3xl:max-w-[1600px] 2xl:max-w-[1280px] max-w-[1280px] mx-auto grid md:grid-cols-[1fr,2.3fr] gap-8 md:gap-12 items-start">
           {/* Left Column */}
-          <div className="sm:space-y-[20px] space-y-[10px]">
-            <h1 className="xl:font-[800] font-[700] text-[37px] sm:text-[40px] md:text-[48px]">
+          <div className="lg:space-y-[35px] md:space-y-[30px] sm:space-y-[20px] space-y-[10px]">
+            <h1 className="xl:font-[800] font-[700] text-[30px] sm:text-[35px] md:text-[45px] lg:text-[50px] xl:text-[60px]">
               How does <br className="md:flex hidden" /> it{" "}
               <span className="text-cyan">work?</span>
             </h1>
-            <p className="md:text-[24px] sm:text-[20px]">
+            <p className="2xl:text-[22px] md:text-[20px] sm:text-[18px] md:mb-[40px] mb-[30px]">
               Follow these three easy steps to get actionable insights about
               your website's performance today!
             </p>
           </div>
 
           {/* Right Column - Steps */}
-          <div className="space-y-[18px]">
+          <div className="space-y-[14px]">
             {/* Step 1 */}
-            <div className="bg-[#181C1E] rounded-[14px] lg:px-[22px] md:px-[20px] px-4 py-[16px] flex md:gap-4 gap-2 w-full">
-              <div className="h-[46px] min-w-[5px] w-[5px] bg-cyan flex mt-1"></div>
+            <div className="bg-[#181C1E] rounded-[20px] md:px-[18px] px-4 py-[15px] flex md:gap-4 gap-2 w-full">
+              <div className="h-[56px] min-w-[5px] w-[5px] bg-cyan flex mt-1 rounded-[5px]"></div>
               <div className="w-full md:space-y-0 space-y-1">
-                <div className="text-cyan text-[16px] font-bold">
+                <div className="text-cyan md:text-[16px] text-[14px] font-[700] mb-0">
                   Step 1
                 </div>
-                <h2 className="md:text-[23px] text-[20px] font-[700] pb-1">
+                <h2 className="lg:text-[25px] md:text-[20px] text-[18px] font-[700]">
                   Enter your website URL
                 </h2>
-                <p className="text-[14px] lg:text-[16px] pb-2">
+                <p className="text-[15px] pb-1">
                   Getting started is easy! Just enter your website URL on the
                   home screen and click{" "}
                   <Link href="/" className="text-cyan">
@@ -72,55 +72,53 @@ export default function HowDoesItWorks() {
                 <input
                   type="url"
                   placeholder="https://www.yourwebsite.com"
-                  className="w-full bg-[#31373D] md:px-[18px] px-[10px] py-1.5 lg:text-[20px] md:text-[18px] text-base text-white placeholder-[#252A2E] focus:outline-none focus:ring-2 focus:ring-cyan rounded-[10px] cursor-pointer"
+                  className="w-full bg-[#31373D] rounded md:px-[18px] md:px-4 px-[10px] py-[6px] lg:text-[20px] text-base text-white placeholder-[#252A2E] focus:outline-none focus:ring-2 focus:ring-cyan rounded-[10px] cursor-pointer"
                   onClick={handleInputClick}
                 />
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="bg-[#181C1E] rounded-[14px] lg:px-[22px] md:px-[20px] px-4 py-[16px] flex gap-3 w-full">
-              <div className="h-[46px] min-w-[5px] w-[5px] bg-cyan flex mt-1"></div>
+            <div className="bg-[#181C1E] rounded-[20px] md:px-[18px] px-4 py-[15px] flex gap-3 w-full">
+              <div className="h-[56px] min-w-[5px] w-[5px] bg-cyan flex mt-1 rounded-[5px]"></div>
               <div className="w-full md:space-y-0 space-y-1">
-                <div className="text-cyan text-[16px] font-[700] mb-0">
+                <div className="text-cyan md:text-[16px] text-[14px] font-[700] mb-0">
                   Step 2
                 </div>
-                <h2 className="md:text-[23px] text-[20px] font-[700] pb-1">
+                <h2 className="lg:text-[25px] md:text-[20px] text-[18px] font-[700]">
                   AI to the rescue!
                 </h2>
-                <p className="text-[14px] lg:text-[16px] pb-2">
+                <p className="text-[15px] pb-1">
                   Our smart <span className="text-cyan">AI engine</span> dives
                   into your website, pinpointing hidden issues that might be
                   affecting your business.
                 </p>
                 <div className="md:space-y-2 space-y-[6px]">
-                  <div className="h-[8px] sm:h-[10px] bg-[#0E8B6E] rounded-full w-full glow-background delay-0"></div>
-                  <div className="h-[8px] sm:h-[10px] bg-[#11977D] rounded-full w-[70%] glow-background delay-200"></div>
-                  <div className="h-[8px] sm:h-[10px] bg-[#18D1A1] rounded-full w-[35%] glow-background delay-400"></div>
+                  <div className="h-[8px] md:h-[10px] bg-[#0E8B6E] rounded-full w-full glow-background delay-0"></div>
+                  <div className="h-[8px] md:h-[10px] bg-[#11977D] rounded-full w-[70%] glow-background delay-200"></div>
+                  <div className="h-[8px] md:h-[10px] bg-[#18D1A1] rounded-full w-[35%] glow-background delay-400"></div>
                 </div>
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="bg-[#181C1E] rounded-[14px] lg:px-[22px] md:px-[20px] px-4 py-[16px] flex md:gap-4 gap-2 w-full">
-              <div className="h-[46px] min-w-[5px] w-[5px] bg-cyan flex mt-1"></div>
+            <div className="bg-[#181C1E] rounded-[20px] md:px-[18px] px-4 py-[15px] flex md:gap-4 gap-2 w-full">
+              <div className="h-[56px] min-w-[5px] w-[5px] bg-cyan flex mt-1 rounded-[5px]"></div>
               <div className="w-full md:space-y-0 space-y-1">
-                <div className="text-cyan text-[16px] font-[700] mb-0">
+                <div className="text-cyan md:text-[16px] text-[14px] font-[700] mb-0">
                   Step 3
                 </div>
-                <h2 className="md:text-[23px] text-[20px] font-[700] pb-1">
+                <h2 className="lg:text-[25px] md:text-[20px] text-[18px] font-[700]">
                   Get your tailored report
                 </h2>
-                <p className="text-[14px] lg:text-[16px] pb-2">
+                <p className="text-[15px] pb-1">
                   Receive a <span className="text-cyan">detailed report</span>{" "}
                   with actionable insights to drive revenue now!
                 </p>
                 <div id="step3" className="max-w-[652px]">
-                  <div className="flex items-center justify-between mb-1">
-                    <div className="text-[16px] lg:text-[18px]">
-                      Overall Score
-                    </div>
-                    <div className="text-xl font-[700] text-cyan">A-</div>
+                  <div className="flex items-center justify-between mb-1 text-[15px] lg:text-[16px]">
+                    <span className="">Overall Score</span>
+                    <span className=" font-[700] text-cyan">A-</span>
                   </div>
                   <div className="h-[8px] md:h-[10px] rounded-full bg-[#31373D]">
                     <div
@@ -135,7 +133,9 @@ export default function HowDoesItWorks() {
           </div>
         </div>
       </main>
-      <Footer />
+      <div className="mt-[-50px] w-full">
+        <Footer />
+      </div>
     </div>
   );
 }
