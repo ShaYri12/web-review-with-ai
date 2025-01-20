@@ -19,8 +19,6 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS,
   },
 });
-console.log("Email user:", process.env.EMAIL_USER);
-console.log("Email app password:", process.env.EMAIL_PASS);
 
 export async function POST(request: Request) {
   const { firstName, lastName, email, message, consent, sendToMailchimp } =
