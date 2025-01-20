@@ -16,7 +16,7 @@ export default {
         cyan: "#18D1A1",
       },
       animation: {
-        shadowPulse: "shadow-pulse 2s infinite ease-in-out",
+        shadowPulse: "shadow-pulse 1.4s infinite ease-in-out",
       },
       keyframes: {
         "shadow-pulse": {

@@ -190,7 +190,7 @@ export default function ReportPage() {
           {/* Header Card */}
           <div className="bg-white text-[#252A2E] rounded-[20px] xl:px-[48px] lg:px-[42px] md:px-[30px] sm:px-[20px] px-4 xl:py-[42px] lg:py-[38px] md:py-[30px] py-[20px] xl:mb-[62px] lg:mb-[50px] md:mb-[40px] mb-[30px] flex justify-between items-center gap-2 md:flex-nowrap flex-wrap">
             <div>
-              <h1 className="2xl:text-[56px] xl:text-[45px] lg:text-[35px] md:text-[25px] sm:text-[20px] text-[18px] font-bold">
+              <h1 className="2xl:text-[56px] xl:text-[45px] lg:text-[35px] md:text-[25px] text-[21px] font-bold">
                 Your Custom Report
               </h1>
               <p className="font-[300] 2xl:text-[35px] xl:text-[28px] lg:text-[20px] md:text-[18px] text-base md:mt-1">

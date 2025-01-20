@@ -102,7 +102,7 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
               cx="50%"
               cy="50%"
               r="45%"
-              className="stroke-cyan fill-none"
+              className="stroke-cyan fill-none transition-all duration-500 ease-linear"
               strokeWidth="15"
               strokeDasharray={`${2 * Math.PI * 45}%`}
               strokeDashoffset={`${
@@ -111,8 +111,12 @@ export default function Progress({ isOpen, onComplete }: ProgressProps) {
                   : 0
               }%`}
               strokeLinecap="round"
+              style={{
+                transition: "stroke-dashoffset 0.5s linear", // Smooth animation
+              }}
             />
           </svg>
+
           {/* Percentage Text */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
             <span className="text-3xl sm:text-4xl md:text-[64px] 3xl:text-[100px] font-bold text-black">

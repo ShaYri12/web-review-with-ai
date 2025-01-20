@@ -1,3 +1,5 @@
+"use client";
+import { useSearchParams } from "next/navigation";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { BsInstagram } from "react-icons/bs";
 import Link from "next/link";
@@ -6,6 +8,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 export default function OrderConfirmed() {
+  const searchParams = useSearchParams();
+  const email = searchParams.get("email");
   return (
     <div className="h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
@@ -38,7 +42,7 @@ export default function OrderConfirmed() {
             <p className="text-[16px] md:text-[18px] lg:text-[20px] xl:text-[25px] font-[400] md:text-left text-center xl:mt-[10px] md:mt-[8px] mt-[4px]">
               Your report has just been sent to your email:{" "}
               <span className="italic text-white inline-flex">
-                {"<user email>"}
+                {email ? email : "N/A"}
               </span>
             </p>
 
@@ -47,19 +51,31 @@ export default function OrderConfirmed() {
                 Follow us on Social!
               </h2>
               <div className="flex 2xl:gap-[50px] xl:gap-[40px] lg:gap-[30px] md:gap-[20px] gap-[16px] items-center justify-center">
-                <Link href="#" className="hover:text-cyan transition-colors">
+                <Link
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  className="hover:text-cyan transition-colors"
+                >
                   <FaFacebook
                     size={77}
                     className="2xl:w-[60px] xl:w-[40px] lg:w-[35px] md:w-[28px] w-[25px]"
                   />
                 </Link>
-                <Link href="#" className="hover:text-cyan transition-colors">
+                <Link
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  className="hover:text-cyan transition-colors"
+                >
                   <BsInstagram
                     size={77}
                     className="2xl:w-[60px] xl:w-[40px] lg:w-[35px] md:w-[28px] w-[25px]"
                   />
                 </Link>
-                <Link href="#" className="hover:text-cyan transition-colors">
+                <Link
+                  href="https://www.linkedin.com/"
+                  target="_blank"
+                  className="hover:text-cyan transition-colors"
+                >
                   <FaLinkedin
                     size={77}
                     className="2xl:w-[60px] xl:w-[40px] lg:w-[35px] md:w-[28px] w-[25px]"

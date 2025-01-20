@@ -24,7 +24,7 @@ export default function Checkout() {
 
   const [reviewData, setReviewData] = useState<ReviewData>({
     image: "/assets/checkout-img1.png",
-    title: "Customized website review",
+    title: "Full PDF Report",
     subTotal: 4.99,
     taxes: 0.25,
   });

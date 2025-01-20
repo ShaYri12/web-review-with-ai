@@ -66,7 +66,7 @@ export const Payment = ({
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?amount=${totalAmount}`,
+        return_url: `${process.env.NEXT_PUBLIC_STRIPE_RETURN_URL}?amount=${totalAmount}&email=${email}`,
         payment_method_data: isCardPayment
           ? {
               billing_details: {
@@ -163,6 +163,7 @@ export const Payment = ({
               disabled={!stripe || loading}
               onClick={() => {
                 setStep("review");
+                window.scrollTo({ top: 0, behavior: "smooth" });
               }}
               type="button" // Prevent form submission here
               className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
@@ -179,6 +180,7 @@ export const Payment = ({
               <button
                 onClick={() => {
                   setStep("payment");
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 type="button" // Prevent form submission here
                 className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
@@ -190,7 +192,7 @@ export const Payment = ({
                 type="submit" // This will trigger form submission
                 className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white text-center px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
               >
-                {!loading ? "Check out" : "Processing..."}
+                {!loading ? "Checkout" : "Processing..."}
               </button>
             </div>
           </div>
