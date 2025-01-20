@@ -195,7 +195,6 @@ export default function About() {
                     name="consent"
                     className="mt-1"
                     aria-label="Consent to email notifications focus:outline-none focus:ring-2 focus:ring-cyan"
-                    required
                     checked={formData.consent}
                     onChange={handleInputChange}
                   />

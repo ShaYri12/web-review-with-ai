@@ -10,7 +10,8 @@ export default function Home() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [url, setUrl] = useState("");
 
-  const handleAnalyze = () => {
+  const handleAnalyze = (e: React.FormEvent) => {
+    e.preventDefault();
     if (url.trim()) {
       setIsAnalyzing(true);
     }
@@ -81,7 +82,10 @@ export default function Home() {
                   </span>
                 </div>
 
-                <div className="relative flex sm:flex-nowrap flex-wrap justify-end bg-[#5E656C] rounded-[15px] p-[4px] lg:gap-0 gap-1 3xl:w-[800px]">
+                <form
+                  onSubmit={handleAnalyze}
+                  className="relative flex sm:flex-nowrap flex-wrap justify-end bg-[#5E656C] rounded-[15px] p-[4px] lg:gap-0 gap-1 3xl:w-[800px]"
+                >
                   <input
                     type="text"
                     value={url}
@@ -90,7 +94,7 @@ export default function Home() {
                     className="flex-1 px-4 py-[6px] bg-[#5E656C] rounded-[15px] placeholder:text-[#31373D] outline-none text-white md:text-[18px] lg:text-[22px] 2xl:text-[25px] 3xl:text-[30px]"
                   />
                   <button
-                    onClick={handleAnalyze}
+                    type="submit"
                     className="analyze-btn sm:flex-grow-0 flex-grow px-5 py-2 bg-cyan rounded-[10px] text-white md:text-[18px] lg:text-[22px] 2xl:text-[25px] 3xl:text-[30px] font-[600] hover:bg-[#1de9b3] transition-colors"
                   >
                     Analyze
@@ -102,7 +106,7 @@ export default function Home() {
                     height={134.5}
                     className="lg:hidden block w-[200px] h-[134.5px] absolute right-[50px] bottom-[-120px]"
                   />
-                </div>
+                </form>
               </div>
 
               <div className="relative flex lg:flex-nowrap flex-wrap sm:flex-row flex-col lg:items-start justify-between gap-[18px] lg:mt-0 sm:mt-[60px] mt-[20px]">

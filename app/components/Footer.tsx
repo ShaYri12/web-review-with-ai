@@ -14,9 +14,9 @@ const Footer = ({ social = true }) => {
             !social && "invisible"
           }`}
         >
-          <SocialLink/>
+          <SocialLink />
         </div>
-        <FooterLogo/>
+        <FooterLogo />
       </div>
     </footer>
   );
