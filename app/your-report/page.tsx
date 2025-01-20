@@ -12,44 +12,74 @@ import { IoMdCheckmark } from "react-icons/io";
 import { GiAlliedStar } from "react-icons/gi";
 import SocialLink from "../components/SocialLink";
 import Link from "next/link";
+import { reportData } from "./reportData";
+
+type IconType = typeof MdOutlineImage;
+
+const iconMap: Record<string, IconType> = {
+  MdOutlineImage,
+  IoPersonCircleOutline,
+  LuPencil,
+  FaRegHeart,
+  IoMdCheckmark,
+  GiAlliedStar,
+  FaRegKeyboard,
+  IoSearchSharp,
+};
 
 interface SectionProps {
-  icon: React.ElementType;
+  icon: keyof typeof iconMap;
   title: string;
   grade: string;
-  content: React.ReactNode;
+  content: {
+    list?: string[];
+    paragraphs?: string[];
+  };
 }
 
-const Section: React.FC<SectionProps> = ({
-  icon: Icon,
-  title,
-  grade,
-  content,
-}) => (
-  <div className="bg-white text-white rounded-[10px] overflow-hidden">
-    <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
-      <div className="flex items-center lg:gap-[16px] md:gap-[14px] gap-2">
-        <Icon
-          size={24}
-          className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
-        />
-        <h2 className="font-[400] lg:text-[21px] md:text-[20px] text-[18px]">
-          {title}
-        </h2>
+const Section: React.FC<SectionProps> = ({ icon, title, grade, content }) => {
+  const Icon = iconMap[icon];
+  return (
+    <div className="bg-white text-white rounded-[10px] overflow-hidden">
+      <div className="flex justify-between items-center md:px-[18px] px-4 py-[7px] bg-[#5E656C]">
+        <div className="flex items-center lg:gap-[16px] md:gap-[14px] gap-2">
+          <Icon
+            size={24}
+            className="lg:min-w-[24px] lg:w-[24px] w-[20px] min-w-[20px]"
+          />
+          <h2 className="font-[400] lg:text-[21px] md:text-[20px] text-[18px]">
+            {title}
+          </h2>
+        </div>
+        <GradeBadge grade={grade} />
       </div>
-      <GradeBadge grade={grade} />
+      <div
+        className={`md:px-[18px] px-4 py-[14px] ${
+          title !== "Visual Appeal" && title !== "Usability"
+            ? "blur-sm select-none"
+            : ""
+        }`}
+      >
+        {content.list && (
+          <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] md:text-[16px] text-[14px]">
+            {content.list.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        )}
+        {content.paragraphs &&
+          content.paragraphs.map((paragraph, index) => (
+            <p
+              key={index}
+              className="text-[#252A2E] md:text-[16px] text-[14px]"
+            >
+              {paragraph}
+            </p>
+          ))}
+      </div>
     </div>
-    <div
-      className={`md:px-[18px] px-4 py-[14px] ${
-        title !== "Visual Appeal" && title !== "Usability"
-          ? "blur-sm select-none"
-          : ""
-      }`}
-    >
-      {content}
-    </div>
-  </div>
-);
+  );
+};
 
 function throttle<T extends (...args: any[]) => void>(
   func: T,
@@ -106,137 +136,7 @@ export default function ReportPage() {
     };
   }, [handleScroll]);
 
-  const sections = [
-    {
-      icon: MdOutlineImage,
-      title: "Visual Appeal",
-      grade: "C",
-      content: (
-        <div>
-          <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] md:text-[16px] text-[14px]">
-            <li>Image quality / relevance</li>
-            <li>Use of white space</li>
-            <li>Color scheme</li>
-            <li>Visual "freshness", modernity</li>
-          </ul>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-        </div>
-      ),
-    },
-    {
-      icon: IoPersonCircleOutline,
-      title: "Usability",
-      grade: "A",
-      content: (
-        <div>
-          <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] md:text-[16px] text-[14px]">
-            <li>Ease of navigation</li>
-            <li>Mobile responsiveness</li>
-            <li>Page load speed</li>
-          </ul>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-          <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-            Lorem ipsum dolar somite. Lorem ipsum dolar somite.{" "}
-          </p>
-        </div>
-      ),
-    },
-    {
-      icon: LuPencil,
-      title: "Content",
-      grade: "A",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      ),
-    },
-    {
-      icon: FaRegHeart,
-      title: "Branding",
-      grade: "B",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-      ),
-    },
-    {
-      icon: IoMdCheckmark,
-      title: "Trustworthy",
-      grade: "C",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Quia beatae debitis
-          ipsum illo quisquam vitae saepe distinctio, reiciendis numquam
-          aspernatur quo molestiae est optio expedita eligendi accusamus,
-          officia omnis tempore?
-        </p>
-      ),
-    },
-    {
-      icon: GiAlliedStar,
-      title: "Call to Action",
-      grade: "F",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Culpa suscipit ea
-          assumenda eos laudantium qui officia necessitatibus quibusdam, aliquam
-          magni et animi at placeat atque dolore optio asperiores, molestiae
-          nihil?
-        </p>
-      ),
-    },
-    {
-      icon: FaRegKeyboard,
-      title: "Functionality",
-      grade: "F",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          exercitationem assumenda, dolore amet illum quam nam eius quia
-          nesciunt, corporis iste iusto cumque animi fuga eveniet sequi
-          consequatur incidunt odit!
-        </p>
-      ),
-    },
-    {
-      icon: IoSearchSharp,
-      title: "SEO",
-      grade: "C-",
-      content: (
-        <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem,
-          ipsum dolor sit amet consectetur adipisicing elit. Doloribus unde
-          maiores ducimus adipisci, aspernatur impedit assumenda numquam veniam.
-          Ad eaque recusandae doloremque harum vitae id? Consequatur magni quas
-          mollitia ut!
-        </p>
-      ),
-    },
-  ];
+  const sections = reportData.sections;
   return (
     <div className="min-h-screen flex flex-col justify-between items-center bg-[#252A2E] text-white relative">
       <Header />
@@ -249,11 +149,11 @@ export default function ReportPage() {
                 Your Custom Report
               </h1>
               <Link
-                href="www.yourwebsite.com"
+                href={reportData.websiteUrl}
                 target="_blank"
                 className="font-[300] 2xl:text-[30px] xl:text-[25px] lg:text-[20px] md:text-[18px] text-base md:mt-1"
               >
-                www.yourwebsite.com
+                {reportData.websiteUrl}
               </Link>
             </div>
             <div className="flex items-center md:gap-2 gap-[6px]">
@@ -265,7 +165,7 @@ export default function ReportPage() {
                 className="2xl:w-[52.05px] lg:w-[40px] md:w-[30px] w-[24px] 2xl:h-[59.8px] lg:h-[40px] md:h-[30px] h-[24px]"
               />
               <span className="font-[600] 2xl:text-[35px] xl:text-[30px] lg:text-[25px] md:text-[20px] text-base">
-                Polygonal Research, LLC
+                {reportData.companyName}
               </span>
             </div>
           </div>
@@ -289,7 +189,7 @@ export default function ReportPage() {
                   </div>
                   <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">
                     <GradeBadge
-                      grade="B"
+                      grade={reportData.overallGrade}
                       className="md:w-[70px] sm:w-[55px] w-[48px] md:h-[70px]  sm:h-[55px] h-[48px] sm:border-[4.5px] border-[4px] 2xl:text-[30px] xl:text-[30px] lg:text-[20px] md:text-[18px] text-[16px]"
                     />
                   </div>
@@ -312,7 +212,9 @@ export default function ReportPage() {
                     className="relative w-full text-center bg-cyan text-white lg:py-[12px] md:py-[10px] py-[9px] px-6 rounded-[10px] overflow-hidden xl:text-[24px] lg:text-[22px] md:text-[20px] text-[18px] font-bold 
                    transition-all duration-300 ease-in-out shadow-lg animate-shadowPulse hover:bg-emerald-500"
                   >
-                    <span className="relative z-10">Unlock ($4.99)</span>
+                    <span className="relative z-10">
+                      Unlock ({reportData.pdfPrice})
+                    </span>
 
                     {/* Glowing Background */}
                     <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-emerald-400 opacity-75 blur-lg animate-pulse"></span>
@@ -379,19 +281,16 @@ export default function ReportPage() {
                       Summary
                     </h2>
                   </div>
-                  <GradeBadge grade="B" />
+                  <GradeBadge grade={reportData.summary.grade} />
                 </div>
                 <div className="md:px-[18px] px-4 py-[14px]">
                   <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] md:text-[16px] text-[14px]">
-                    <li>Our understanding of the goal of the website</li>
-                    <li>High level summary of our takeaways</li>
-                    <li>Grades for each category</li>
+                    {reportData.summary.list.map((item, index) => (
+                      <li key={index}>{item}</li>
+                    ))}
                   </ul>
                   <p className="text-[#252A2E] md:text-[16px] text-[14px]">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    {reportData.summary.content}
                   </p>
                 </div>
               </div>
