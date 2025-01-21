@@ -96,12 +96,13 @@ export default function Checkout() {
             </div>
 
             {/* Preview Cards */}
-            <div className="bg-[#31373D] h-full">
-              <div className="flex flex-wrap items-center justify-center gap-[20px] h-full px-4 lg:pt-[100px] 2xl:pb-[11vw] lg:pb-[80px] pt-[80px] pb-[80px]">
+            <div className="bg-[#31373D] h-full static lg:fixed lg:right-0 lg:w-1/2 px-6 lg:px-10 lg:overflow-hidden">
+              <div className="flex items-center justify-center gap-[20px] h-full px-4 lg:pt-[100px] lg:pb-[80px] pt-[80px] pb-[80px]">
                 <Image
                   src="/assets/checkout-img1.png"
                   alt="web-img-1"
                   width={280}
+                  className="w-1/2"
                   height={380}
                 />
                 <Image
@@ -109,6 +110,7 @@ export default function Checkout() {
                   alt="web-img-2"
                   width={280}
                   height={380}
+                  className="w-1/2"
                 />
               </div>
               <div className="md:flex hidden absolute right-10 bottom-8">
