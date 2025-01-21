@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     // Always send form data to polygonalresearchllc@gmail.com
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: "sharjeelb60@gmail.com", // Changed back to the original email
+      to: "polygonalresearchllc@gmail.com", // Changed back to the original email
       subject: "New Form Submission",
       text: `Name: ${firstName} ${lastName}\nEmail: ${email}\nMessage: ${message}`,
     };
