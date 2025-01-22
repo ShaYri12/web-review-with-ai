@@ -147,7 +147,7 @@ const Header: React.FC = () => {
             {hasReport && (
               <Link
                 href="/your-report"
-                className={`3xl:text-[25px] md:text-[18px] font-[400] ${
+                className={`text-[18px] font-[400] ${
                   pathname === "/your-report"
                     ? "text-cyan"
                     : "text-[#FFFFFF] hover:text-emerald-300"

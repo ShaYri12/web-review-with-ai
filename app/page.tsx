@@ -89,6 +89,7 @@ export default function Home() {
                   <input
                     type="text"
                     value={url}
+                    disabled={isAnalyzing}
                     onChange={(e) => setUrl(e.target.value)}
                     placeholder="Enter your website URL here..."
                     className="flex-1 px-4 py-[6px] bg-[#5E656C] rounded-[15px] placeholder:text-[#31373D] outline-none text-white md:text-[18px] lg:text-[22px] 2xl:text-[25px] 3xl:text-[30px]"
