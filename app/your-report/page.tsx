@@ -186,8 +186,12 @@ export default function ReportPage() {
                     {/* <h3 className="w-full h-full flex items-center justify-center absolute top-0 text-center font-sans">
                       Your website <br /> screenshot
                     </h3> */}
-                    <div className="overflow-hidden w-[70%] h-[90%] absolute top-10 sm:top-[4rem] md:top-[5.5rem] lg:top-8 left-14 sm:left-[6rem] md:left-32 lg:left-[44px]">
-                      <img src='/assets/website-screen.png' alt="sfsd" className="overflow-hidden" />
+                    <div className="overflow-hidden w-[73.5%] sm:w-[73%] lg:h-[73%] md:h-[73%] h-[73%] absolute top-[7.3vw] lg:top-[1.42rem] left-[12.2vw] sm:left-[13vw] md:left-[13vw] lg:left-[41px]">
+                      <img
+                        src={reportData.webScreenshot}
+                        alt="website screenshot"
+                        className="overflow-hidden h-full object-cover w-full"
+                      />
                     </div>
                   </div>
                   <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">

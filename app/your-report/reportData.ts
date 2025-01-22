@@ -1,5 +1,6 @@
 export const reportData = {
   websiteUrl: "www.yourwebsite.com",
+  webScreenshot: "/assets/website-screen.png",
   companyName: "Polygonal Research, LLC",
   overallGrade: "B-",
   pdfPrice: "$4.99",
