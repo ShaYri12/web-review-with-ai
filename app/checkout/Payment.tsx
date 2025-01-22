@@ -163,7 +163,7 @@ export const Payment = ({
               disabled={!stripe || loading}
               onClick={() => {
                 setStep("review");
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                window.scrollTo(0, 0);
               }}
               type="button" // Prevent form submission here
               className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
@@ -180,7 +180,7 @@ export const Payment = ({
               <button
                 onClick={() => {
                   setStep("payment");
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.scrollTo(0, 0);
                 }}
                 type="button" // Prevent form submission here
                 className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
