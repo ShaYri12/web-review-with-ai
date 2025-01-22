@@ -183,9 +183,12 @@ export default function ReportPage() {
                       height={337}
                       className="w-full rounded-[10px] overflow-hidden"
                     />
-                    <h3 className="w-full h-full flex items-center justify-center absolute top-0 text-center font-sans">
+                    {/* <h3 className="w-full h-full flex items-center justify-center absolute top-0 text-center font-sans">
                       Your website <br /> screenshot
-                    </h3>
+                    </h3> */}
+                    <div className="overflow-hidden w-[70%] h-[90%] absolute top-10 sm:top-[4rem] md:top-[5.5rem] lg:top-8 left-14 sm:left-[6rem] md:left-32 lg:left-[44px]">
+                      <img src='/assets/website-screen.png' alt="sfsd" className="overflow-hidden" />
+                    </div>
                   </div>
                   <div className="absolute lg:top-[-2%] top-[2%] lg:right-[3%] right-[7%]">
                     <GradeBadge
