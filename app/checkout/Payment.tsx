@@ -34,6 +34,11 @@ export const Payment = ({
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
 
+  // Scroll to top when `step` changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
+
   useEffect(() => {
     fetch("/api/create-payment-intent", {
       method: "POST",
@@ -161,10 +166,7 @@ export const Payment = ({
             </Link>
             <button
               disabled={!stripe || loading}
-              onClick={() => {
-                setStep("review");
-                window.scrollTo(0, 0);
-              }}
+              onClick={() => setStep("review")}
               type="button" // Prevent form submission here
               className="bg-cyan md:max-w-[260px] max-w-[200px] w-full text-white px-4 md:py-[11px] py-[9px] rounded-[5px] lg:text-[20px] md:text-[18px] text-base font-bold hover:bg-emerald-500 transition-colors"
             >
@@ -178,10 +180,7 @@ export const Payment = ({
             <Review reviewData={reviewData} />
             <div className="flex items-center justify-between gap-4">
               <button
-                onClick={() => {
-                  setStep("payment");
-                  window.scrollTo(0, 0);
-                }}
+                onClick={() => setStep("payment")}
                 type="button" // Prevent form submission here
                 className="text-white font-[300] hover:font-[400] lg:text-[20px] md:text-[18px] text-base flex items-center gap-1 transition-weight duration-200 ease-in-out"
               >
