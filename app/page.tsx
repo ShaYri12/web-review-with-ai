@@ -110,7 +110,7 @@ export default function Home() {
                 </form>
               </div>
 
-              <div className="relative flex lg:flex-nowrap flex-wrap sm:flex-row flex-col lg:items-start justify-between gap-[18px] lg:mt-0 sm:mt-[60px] mt-[20px]">
+              <div className="relative flex lg:flex-nowrap flex-wrap sm:flex-row flex-col lg:items-start justify-between gap-[18px] lg:mt-0 sm:mt-[60px] mt-[20px] sm:mb-0 mb-[40px]">
                 <div className="flex space-x-2 md:space-x-4 lg:space-x-[20px] 3xl:space-x-[26px] 3xl:mb-[80px] lg:mb-[60px] mt-[60px]">
                   <span className="lg:hidden 3xl:w-[50px] lg:w-[40px] md:w-[35px] w-[32px] min-w-[32px] 3xl:h-[50px] lg:h-[40px] md:h-[35px] h-[32px] rounded-full 3xl:text-[30px] lg:text-[22px] md:text-[18px] font-bold bg-cyan flex items-center justify-center">
                     2
