@@ -17,13 +17,13 @@ const Footer = ({ social = true }) => {
           <SocialLink />
           <Link
             href="/terms-and-service"
-            className="text-nowrap text-white text-[14px] hover:text-cyan transition-all duration-300"
+            className="text-nowrap text-white text-[13px] hover:text-cyan transition-all duration-300"
           >
             Terms of Service
           </Link>
           <Link
             href="/privacy-policy"
-            className="text-nowrap text-white text-[14px] hover:text-cyan transition-all duration-300"
+            className="text-nowrap text-white text-[13px] hover:text-cyan transition-all duration-300"
           >
             Privacy Policy
           </Link>
