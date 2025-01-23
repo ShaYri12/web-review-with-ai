@@ -54,11 +54,10 @@ const Section: React.FC<SectionProps> = ({ icon, title, grade, content }) => {
         <GradeBadge grade={grade} />
       </div>
       <div
-        className={`md:px-[18px] px-4 py-[14px] ${
-          title !== "Visual Appeal" && title !== "Usability"
+        className={`md:px-[18px] px-4 py-[14px] ${title !== "Visual Appeal" && title !== "Usability"
             ? "blur-sm select-none"
             : ""
-        }`}
+          }`}
       >
         {content.list && (
           <ul className="list-disc md:ml-6 ml-5 mb-4 text-[#252A2E] md:text-[16px] text-[14px]">
@@ -205,11 +204,10 @@ export default function ReportPage() {
                 <div
                   ref={sectionRef}
                   className={`bg-[#252A2E] z-40 py-4 flex flex-col 2xl:gap-[40px] xl:gap-[35px] lg:gap-[30px] md:gap-[25px] gap-[20px] xl:mt-[30px] lg:mt-[25px]
-                  ${
-                    isSticky
+                  ${isSticky
                       ? "fixed top-0 left-0 right-0 px-4"
                       : "relative md:mt-[20px] mt-[15px]"
-                  }`}
+                    }`}
                 >
                   <h2 className="lg:text-[23px] md:text-[20px] text-[18px] font-bold">
                     Get your full detailed PDF report by email today!
@@ -228,7 +226,7 @@ export default function ReportPage() {
                   </Link>
                 </div>
 
-                <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[55px] xl:mt-[50px] lg:mt-[40px] md:mt-[30px] mt-[20px]">
+                <div className="relative mx-auto 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[358.4px] 2xl:mt-[40px] xl:mt-[40px] lg:mt-[30px] md:mt-[30px] mt-[20px]">
                   {/* First page - back */}
                   <div className="absolute right-0 top-8 3xl:w-[361px] lg:w-[240px] w-[220px] 3xl:h-[190px] xl:h-[180px] lg:h-[170px] h-auto mt-[20px]">
                     <Image
@@ -266,8 +264,12 @@ export default function ReportPage() {
                   </div>
                 </div>
               </div>
-              <div className="lg:block hidden absolute bottom-0 left-0">
+              <div className="lg:block hidden absolute -bottom-10 left-0">
                 <SocialLink />
+                <div className="my-5 flex items-center gap-3">
+                  <Link href='/terms-and-service' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Terms of Service</Link>
+                  <Link href='/privacy-policy' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Privacy Policy</Link>
+                </div>
               </div>
             </div>
 
@@ -310,8 +312,11 @@ export default function ReportPage() {
               </div>
             </div>
           </div>
-          <div className="block lg:hidden mt-10">
+          <div className="flex flex-wrap gap-4 lg:hidden mt-10">
             <SocialLink />
+            <Link href='/terms-and-service' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Terms of Service</Link>
+            <Link href='/privacy-policy' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Privacy Policy</Link>
+
           </div>
         </div>
       </main>

@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import convertToSubCurrency from "../lib/convertToSubCurrency";
+import Link from "next/link";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -88,8 +89,12 @@ export default function Checkout() {
                       />
                     </Elements>
                   </div>
-                  <div className="w-full md:flex hidden">
+                  <div className="w-full md:flex items-center gap-5 hidden">
                     <SocialLink />
+                    <div className="flex items-center gap-3">
+                      <Link href='/terms-and-service' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Terms of Service</Link>
+                      <Link href='/privacy-policy' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Privacy Policy</Link>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -115,6 +120,7 @@ export default function Checkout() {
               </div>
               <div className="md:flex hidden absolute right-10 bottom-8">
                 <FooterLogo />
+
               </div>
             </div>
           </div>
