@@ -303,7 +303,9 @@ const TermsAndService = () => {
               Contact Information
             </h2>
             <p className='text-base sm:text-lg pl-9 sm:pl-11 font-light'>
-              For any questions or concerns regarding these Terms of Service, please contact us at polygonalresearchllc@gmail.com
+              For any questions or concerns regarding these Terms of Service, please contact us at <a href="mailto:polygonalresearchllc@gmail.com" className="underline underline-offset-4">
+                polygonalresearchllc@gmail.com
+              </a>
             </p>
           </div>
 
@@ -333,7 +335,9 @@ const TermsAndService = () => {
             <h2 className='text-[24px] font-semibold flex sm:items-center gap-3'>
               <div className='min-w-6 sm:w-8 h-6 sm:h-8 bg-cyan flex items-center justify-center rounded text-lg sm:text-2xl'>14</div>
               <p className='text-base sm:text-lg font-light'>
-                For the full process of submitting DMCA notices and counter-notices, please contact us at polygonalresearchllc@gmail.com
+                For the full process of submitting DMCA notices and counter-notices, please contact us at <a href="mailto:polygonalresearchllc@gmail.com" className="underline underline-offset-4">
+                polygonalresearchllc@gmail.com
+              </a>
               </p>
             </h2>
           </div>

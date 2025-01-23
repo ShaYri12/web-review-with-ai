@@ -293,7 +293,10 @@ const TermsAndService = () => {
               Contact Information
             </h2>
             <p className="text-base sm:text-lg pl-9 sm:pl-11 font-light">
-              For any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at polygonalresearchllc@gmail.com
+              For any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at{" "}
+              <a href="mailto:polygonalresearchllc@gmail.com" className="underline underline-offset-4">
+                polygonalresearchllc@gmail.com
+              </a>
             </p>
           </div>
 
@@ -340,7 +343,9 @@ const TermsAndService = () => {
                 <span className="font-normal">Non-Discrimination:</span> We will not discriminate against you for exercising your CCPA rights
               </li>
               <li className="text-base sm:text-lg relative before:content-['13.5'] before:absolute before:-left-[40px] before:text-primary before:font-medium">
-                To exercise your rights under CCPA, please contact us at polygonalresearchllc@gmail.com
+                To exercise your rights under CCPA, please contact us at <a href="mailto:polygonalresearchllc@gmail.com" className="underline underline-offset-4">
+                polygonalresearchllc@gmail.com
+              </a>
               </li>
             </ul>
           </div>
@@ -348,6 +353,10 @@ const TermsAndService = () => {
 
         <p className="mt-5 text-base sm:text-[20px] font-normal">
           By using Ready2Launch, you acknowledge that you have read and understood this Privacy Policy and agree to the collection, use, and disclosure of your information as described herein.
+        </p>
+
+        <p className="mt-5 text-base sm:text-[20px] font-normal underline underline-offset-4">
+          Last updated: January 21, 2025
         </p>
       </div>
       <Footer />
