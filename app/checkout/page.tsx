@@ -92,8 +92,18 @@ export default function Checkout() {
                   <div className="w-full md:flex items-center gap-5 hidden">
                     <SocialLink />
                     <div className="flex items-center gap-3">
-                      <Link href='/terms-and-service' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Terms of Service</Link>
-                      <Link href='/privacy-policy' className="text-nowrap text-white lg:text-[20px] md:text-[18px] text-base hover:text-cyan transition-all duration-300">Privacy Policy</Link>
+                      <Link
+                        href="/terms-and-service"
+                        className="text-nowrap text-white text-[13px] hover:text-cyan transition-all duration-300"
+                      >
+                        Terms of Service
+                      </Link>
+                      <Link
+                        href="/privacy-policy"
+                        className="text-nowrap text-white text-[13px] hover:text-cyan transition-all duration-300"
+                      >
+                        Privacy Policy
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -120,7 +130,6 @@ export default function Checkout() {
               </div>
               <div className="md:flex hidden absolute right-10 bottom-8">
                 <FooterLogo />
-
               </div>
             </div>
           </div>
