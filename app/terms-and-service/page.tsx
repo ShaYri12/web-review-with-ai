@@ -56,7 +56,7 @@ const TermsAndService = () => {
 
           {/* User Data and Privacy */}
           <div className='pt-3 sm:pt-5 space-y-1.5 sm:space-y-2'>
-            <h2 className='text-xl sm:text-xl md:text-[24px] font-semibold flex items-center gap-2 sm:gap-3'>
+            <h2 className=' text-xl md:text-[24px] font-semibold flex items-center gap-2 sm:gap-3'>
               <div className='w-6 sm:w-8 h-6 sm:h-8 bg-cyan flex items-center justify-center rounded text-base sm:text-2xl'>3</div>
               User Data and Privacy
             </h2>
